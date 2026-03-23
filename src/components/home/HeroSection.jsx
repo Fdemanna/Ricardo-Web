@@ -15,12 +15,15 @@ export default function HeroSection() {
                         <p className="text-lg lg:text-xl leading-relaxed mb-8 text-chocolate/80 font-light">
                             Ricardo Gelats es la heladería de toda la vida en la que generaciones de castellonenses disfrutan de helados artesanos, horchata, gofres y meriendas en familia.
                         </p>
-                        <div className="flex flex-wrap gap-4">
-                            <button onClick={() => navigate('/flavors')} className="btn-primary px-8 py-3.5 text-base font-bold shadow-lg transition-transform hover:scale-105">
-                                Descubre nuestra carta
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                            <button onClick={() => navigate('/flavors')} className="btn-primary px-6 py-3.5 text-sm sm:text-base font-bold shadow-lg transition-transform hover:scale-105 flex-1 text-center">
+                                Nuestros Sabores
                             </button>
-                            <button onClick={() => navigate('/locations')} className="btn-secondary px-8 py-3.5 text-base font-bold transition-colors hover:bg-chocolate hover:text-cream">
-                                Encuentra tu heladería más cercana
+                            <button onClick={() => navigate('/menu')} className="btn-secondary px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream flex-1 text-center">
+                                Ver Menú
+                            </button>
+                            <button onClick={() => navigate('/locations')} className="btn-secondary px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream w-full sm:w-auto flex-[2_2_100%] lg:flex-1 text-center">
+                                Encuentra tu local
                             </button>
                         </div>
                     </div>
