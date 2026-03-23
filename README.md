@@ -5,19 +5,19 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
 
-Una aplicación web moderna, ultra-rápida y administrable para **Ricardo Gelats**, la heladería artesanal icónica de Castellón. Construida con React, Vite y Tailwind CSS, y sincronizada en tiempo real con Firebase.
+> ⚠️ **Nota de Arquitectura:** Este proyecto **no es una *Landing Page* estática HTML**. Se trata de una **Single Page Application (SPA) Full-Stack** con su propio **Sistema de Gestión de Contenido (CMS) a medida**.
 
-## 🚀 Características Principales
+Una aplicación web robusta, modular y ultra-rápida construida para **Ricardo Gelats**, la heladería artesanal icónica de Castellón. Desarrollada puramente en React, permite a los administradores del negocio gobernar su catálogo sin depender de un técnico.
 
-- **Dashboard de Administración Protegido (`/admin`)**: Sistema de gestión de inventario en tiempo real (CRUD) protegido por Firebase Authentication.
-- **Sincronización en Tiempo Real**: Catálogos de helados y menús de cafetería que se actualizan instantáneamente en la vista pública al editarse desde el panel.
-- **Diseño UI/UX "Pro Max"**: Estética "Glassmorphism" y temática *Crema y Chocolate*, con soporte responsivo, micro-interacciones táctiles y animaciones accesibles.
-- **Rendimiento Vercel Best Practices**: 
-  - *Code Splitting* por rutas mediante `React.lazy()`
-  - Carga diferida nativa de imágenes (`loading="lazy"`)
-  - Virtualización estática de listas CSS (`content-visibility`)
-  - Ausencia de *Cascading Updates* (Eliminación estricta de `useEffect` innecesarios).
-- **SEO y Accesibilidad (A11y)**: Navegación tabular con indicadores visuales focales personalizados y metas preparadas para el indexado de motores de búsqueda.
+## 🚀 Por qué esto es una Web App (Características Núcleo)
+
+- **Panel de Administración Privado (`/admin`)**: La joya de la corona de la aplicación es su propio CMS. Protegido rigurosamente mediante las reglas de **Firebase Authentication**, los dueños pueden realizar operaciones completas **CRUD** (Añadir, Editar, Ocultar o Eliminar) sobre helados, alérgenos y cafetería.
+- **Motor en Tiempo Real (Firestore)**: El menú visible para el público no es estático. Todo el DOM está suscrito a la base de datos vía WebSockets (`onSnapshot`). Si el gerente agota un producto desde su móvil, la pantalla del cliente se actualiza **al instante sin recargar**.
+- **Ingeniería de Rendimiento (Vercel Best Practices)**:
+  - *Code Splitting* asincrónico por rutas mediante `React.lazy()` (El código pesado del admin jamás se envía al cliente normal).
+  - Virtualización de listas con CSS (`content-visibility`) capaz de sostener catálogos centenarios en pantalla sin dropear *frames*.
+  - Eliminación estricta de *Cascading Updates* mediante abstracción síncrona en los formularios de edición.
+- **Sistema de Diseño Mobile-First**: Estética moderna estilo "Glassmorphism" construida mediante TailwindCSS, con micro-interacciones táctiles personalizadas y accesibilidad total de navegación por teclado (A11y).
 
 ## 🛠️ Stack Tecnológico
 

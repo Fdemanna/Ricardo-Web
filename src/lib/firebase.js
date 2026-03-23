@@ -6,13 +6,13 @@ import { getAuth } from "firebase/auth";
 // Puedes obtener estos datos al crear un proyecto en la consola web de Firebase
 // y agregar una aplicación web (</>).
 const firebaseConfig = {
-  apiKey: "AIzaSyDawOl-BcwFwkA7EnhM1nfXhq37_vNl_yY",
-  authDomain: "ricardo-web-7701b.firebaseapp.com",
-  projectId: "ricardo-web-7701b",
-  storageBucket: "ricardo-web-7701b.firebasestorage.app",
-  messagingSenderId: "964906485774",
-  appId: "1:964906485774:web:c367f1762a9234a172d45f",
-  measurementId: "G-82BF3S2JL8"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
