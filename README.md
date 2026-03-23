@@ -25,7 +25,7 @@ Una aplicación web robusta, modular y ultra-rápida construida para **Ricardo G
 - **Build Tool**: Vite
 - **Estilos**: Tailwind CSS 3
 - **Base de Datos & Auth**: Firebase (Firestore & Firebase Auth)
-- **Despliegue Recomendado**: Vercel / Netlify / Firebase Hosting
+- **Despliegue**: Vercel
 
 ## 💻 Instalación Local
 

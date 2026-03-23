@@ -15,14 +15,17 @@ export default function HeroSection() {
                         <p className="text-lg lg:text-xl leading-relaxed mb-8 text-chocolate/80 font-light">
                             Ricardo Gelats es la heladería de toda la vida en la que generaciones de castellonenses disfrutan de helados artesanos, horchata, gofres y meriendas en familia.
                         </p>
-                        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                            <button onClick={() => navigate('/flavors')} className="btn-primary px-6 py-3.5 text-sm sm:text-base font-bold shadow-lg transition-transform hover:scale-105 flex-1 text-center">
-                                Nuestros Sabores
-                            </button>
-                            <button onClick={() => navigate('/menu')} className="btn-secondary bg-cream px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream flex-1 text-center">
-                                Ver Menú
-                            </button>
-                            <button onClick={() => navigate('/locations')} className="btn-secondary bg-cream px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream w-full sm:w-auto flex-[2_2_100%] lg:flex-1 text-center">
+                        <div className="flex flex-col gap-6 mt-4 w-full sm:max-w-md">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button onClick={() => navigate('/flavors')} className="bg-chocolate text-cream border-2 border-chocolate px-6 py-4 rounded-custom text-base font-bold shadow-xl transition-all hover:bg-transparent hover:text-chocolate">
+                                    Nuestros Sabores
+                                </button>
+                                <button onClick={() => navigate('/menu')} className="bg-white text-chocolate border-2 border-transparent px-6 py-4 rounded-custom text-base font-bold shadow-xl transition-all hover:border-chocolate">
+                                    Ver Menú
+                                </button>
+                            </div>
+                            <button onClick={() => navigate('/locations')} className="flex items-center justify-center sm:justify-start gap-2 text-chocolate/80 hover:text-chocolate font-bold text-sm uppercase tracking-widest transition-colors w-fit mx-auto sm:mx-0 group">
+                                <span className="material-symbols-outlined text-lg group-hover:animate-bounce">location_on</span>
                                 Encuentra tu local
                             </button>
                         </div>
