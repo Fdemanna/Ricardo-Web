@@ -1,5 +1,10 @@
 # Ricardo Gelats Web App 🍦
 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase)
+
 Una aplicación web moderna, ultra-rápida y administrable para **Ricardo Gelats**, la heladería artesanal icónica de Castellón. Construida con React, Vite y Tailwind CSS, y sincronizada en tiempo real con Firebase.
 
 ## 🚀 Características Principales
@@ -50,6 +55,18 @@ Una aplicación web moderna, ultra-rápida y administrable para **Ricardo Gelats
    ```
 
 5. Abre `http://localhost:5173` en tu navegador.
+
+## 📂 Estructura del Proyecto
+
+```text
+src/
+├── assets/        # Recursos estáticos
+├── components/    # Componentes modulares (admin, layout, UI)
+├── constants/     # Datos estáticos (Alergenos, Locales)
+├── hooks/         # Lógica reutilizable abstracta (Firebase, Auth)
+├── pages/         # Vistas de React Router
+└── index.css      # Utilidades globales y Tailwind base
+```
 
 ## 🏗️ Comandos Útiles
 
