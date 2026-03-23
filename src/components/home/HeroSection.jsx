@@ -19,10 +19,10 @@ export default function HeroSection() {
                             <button onClick={() => navigate('/flavors')} className="btn-primary px-6 py-3.5 text-sm sm:text-base font-bold shadow-lg transition-transform hover:scale-105 flex-1 text-center">
                                 Nuestros Sabores
                             </button>
-                            <button onClick={() => navigate('/menu')} className="btn-secondary px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream flex-1 text-center">
+                            <button onClick={() => navigate('/menu')} className="btn-secondary bg-cream px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream flex-1 text-center">
                                 Ver Menú
                             </button>
-                            <button onClick={() => navigate('/locations')} className="btn-secondary px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream w-full sm:w-auto flex-[2_2_100%] lg:flex-1 text-center">
+                            <button onClick={() => navigate('/locations')} className="btn-secondary bg-cream px-6 py-3.5 text-sm sm:text-base font-bold transition-colors hover:bg-chocolate hover:text-cream w-full sm:w-auto flex-[2_2_100%] lg:flex-1 text-center">
                                 Encuentra tu local
                             </button>
                         </div>
