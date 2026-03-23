@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-cream text-chocolate font-sans antialiased;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-serif;
+    }
+    a, button, input, textarea, select {
+        @apply outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-cream focus-visible:ring-chocolate/50;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-chocolate text-cream rounded-custom transition-all duration-200 active:scale-95;
+    }
+    .btn-primary:hover {
+        @apply bg-chocolate-light;
+    }
+    .btn-secondary {
+        @apply bg-transparent text-chocolate border-2 border-chocolate rounded-custom transition-all duration-200 active:scale-95 hover:bg-chocolate/5;
+    }
+    .drop-cap {
+        @apply float-left font-serif text-chocolate;
+        font-size: 4.5rem;
+        line-height: 0.8;
+        padding-right: 0.75rem;
+        padding-top: 0.25rem;
+    }
+
+    /* Typographic Scale */
+    .heading-xl {
+        @apply text-5xl lg:text-7xl font-bold font-serif text-chocolate leading-tight tracking-tight;
+    }
+    .heading-lg {
+        @apply text-4xl lg:text-5xl font-bold font-serif text-chocolate leading-tight;
+    }
+    .heading-md {
+        @apply text-3xl lg:text-4xl font-bold font-serif text-chocolate leading-tight;
+    }
+    .heading-sm {
+        @apply text-2xl font-bold font-serif text-chocolate;
+    }
+
+    /* Container Pattern */
+    .section-container {
+        @apply w-full max-w-7xl mx-auto px-6 lg:px-12;
+    }
+}
+
+@layer utilities {
+    .content-visibility-row {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 80px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: theme('colors.cream');
+}
+::-webkit-scrollbar-thumb {
+    background: theme('colors.chocolate');
+    border-radius: 4px;
+}

@@ -1,0 +1,93 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - link "icecream Ricardo Gelato" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: icecream
+      - heading "Ricardo Gelato" [level=1] [ref=e7]
+    - navigation [ref=e8]:
+      - link "Inicio" [ref=e9] [cursor=pointer]:
+        - /url: /
+      - link "Nuestros Helados" [ref=e10] [cursor=pointer]:
+        - /url: /flavors
+      - link "Sobre Nosotros" [ref=e11] [cursor=pointer]:
+        - /url: /story
+      - link "Nuestros Locales" [ref=e12] [cursor=pointer]:
+        - /url: /locations
+      - generic [ref=e13]:
+        - button "ES" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]: "|"
+        - button "EN" [ref=e16] [cursor=pointer]
+      - button "Pedir Online" [ref=e17] [cursor=pointer]
+  - main [ref=e18]:
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: Carta
+        - heading "Nuestros helados y más" [level=1] [ref=e22]
+        - paragraph [ref=e23]: En nuestra carta encontrarás helados artesanales, horchata, granizados, gofres y opciones de cafetería para disfrutar a cualquier hora del día.
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - heading "Horchata y granizados" [level=2] [ref=e27]
+          - generic [ref=e30]:
+            - generic [ref=e33]: Casero
+            - generic [ref=e34]:
+              - heading "Chocolate con leche" [level=3] [ref=e35]
+              - paragraph [ref=e36]: Chocolate con leche
+        - generic [ref=e37]:
+          - heading "Chocolates" [level=2] [ref=e39]
+          - generic [ref=e42]:
+            - generic [ref=e45]: Casero
+            - generic [ref=e46]:
+              - heading "Chocolate Negro" [level=3] [ref=e47]
+              - paragraph [ref=e48]: Cacao 70%
+  - contentinfo [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e54]: icecream
+            - heading "Ricardo Gelato" [level=2] [ref=e55]
+          - paragraph [ref=e56]: Ricardo Gelats es la heladería de toda la vida en la que generaciones de castellonenses disfrutan de helados artesanos, horchata, gofres y meriendas en familia.
+        - generic [ref=e57]:
+          - heading "Explorar" [level=4] [ref=e58]
+          - list [ref=e59]:
+            - listitem [ref=e60]:
+              - link "Sobre Nosotros" [ref=e61] [cursor=pointer]:
+                - /url: /story
+            - listitem [ref=e62]:
+              - link "La Carta" [ref=e63] [cursor=pointer]:
+                - /url: /flavors
+            - listitem [ref=e64]:
+              - link "Nuestros Locales" [ref=e65] [cursor=pointer]:
+                - /url: /locations
+            - listitem [ref=e66]:
+              - link "Catering" [ref=e67] [cursor=pointer]:
+                - /url: "#"
+        - generic [ref=e68]:
+          - heading "Contacto" [level=4] [ref=e69]
+          - list [ref=e70]:
+            - listitem [ref=e71]:
+              - generic [ref=e72]: mail
+              - text: hello@ricardogelato.es
+            - listitem [ref=e73]:
+              - generic [ref=e74]: call
+              - text: +34 964 12 34 56
+        - generic [ref=e75]:
+          - heading "Síguenos" [level=4] [ref=e76]
+          - generic [ref=e77]:
+            - link "IG" [ref=e78] [cursor=pointer]:
+              - /url: https://www.instagram.com/ricardogelats/
+              - generic [ref=e79]: IG
+            - link "shopping_bag" [ref=e80] [cursor=pointer]:
+              - /url: https://www.toogoodtogo.com/es/find/castellodelaplana/ricardogelats/meal/ricardogelats-21975293747402048
+              - generic [ref=e81]: shopping_bag
+      - generic [ref=e82]:
+        - paragraph [ref=e83]: © 2023 Ricardo Gelats. Todos los derechos reservados.
+        - generic [ref=e84]:
+          - link "Política de Privacidad" [ref=e85] [cursor=pointer]:
+            - /url: "#"
+          - link "Términos de Servicio" [ref=e86] [cursor=pointer]:
+            - /url: "#"
+```
