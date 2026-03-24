@@ -10,7 +10,7 @@ export default function FlavorsPage() {
 
     const categories = useMemo(() => {
         const activeFlavors = flavors.filter(f => f.isAvailable);
-        
+
         const grouped = activeFlavors.reduce((acc, flavor) => {
             const cat = flavor.category;
             if (!acc[cat]) {
@@ -29,10 +29,10 @@ export default function FlavorsPage() {
 
     return (
         <div className="bg-cream min-h-screen">
-            <PageHeader 
-                overline="Carta" 
-                title="Nuestros helados y más" 
-                description="En nuestra carta encontrarás helados artesanales, horchata, granizados, gofres y opciones de cafetería para disfrutar a cualquier hora del día."
+            <PageHeader
+                overline="Carta"
+                title="Nuestros helados artesanale"
+                description="En nuestra carta encontrarás una cuidada selección de helados artesanales, elaborados con ingredientes de calidad y una amplia variedad de sabores para disfrutar en cualquier momento del día."
             />
 
             <div className="section-container py-16 space-y-24">

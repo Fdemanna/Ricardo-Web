@@ -31,8 +31,8 @@ export default function MenuPage() {
         <div className="bg-cream min-h-screen">
             <PageHeader 
                 overline="Especialidades" 
-                title="Carta y Cafetería" 
-                description="Descubre nuestra exquisita selección de postres, gofres belgas, crepes, cafés de especialidad y bebidas refrescantes. El complemento perfecto para cualquier momento del día."
+                title="Carta" 
+                description="Descubre nuestra exquisita selección de postres, gofres, crepes, cafés de especialidad y bebidas refrescantes. El complemento perfecto para cualquier momento del día."
             />
 
             <div className="section-container py-16 space-y-24">

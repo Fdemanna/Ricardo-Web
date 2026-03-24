@@ -21,7 +21,7 @@ export default function Navigation() {
     const navLinks = [
         { name: 'Inicio', path: '/' },
         { name: 'Nuestros Helados', path: '/flavors' },
-        { name: 'Carta / Cafetería', path: '/menu' },
+        { name: 'Carta', path: '/menu' },
         { name: 'Sobre Nosotros', path: '/story' },
         { name: 'Nuestros Locales', path: '/locations' },
     ];
