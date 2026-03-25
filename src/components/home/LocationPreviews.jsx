@@ -8,8 +8,8 @@ export default function LocationPreviews() {
     return (
         <section className="pb-12 section-container grid md:grid-cols-2 gap-6">
             {LOCATIONS_DATA.map((loc, idx) => (
-                <ScrollReveal key={loc.id} delay={idx * 150} className="h-full">
-                <div onClick={() => navigate('/locations')} className="h-full group bg-[#FFFBF2] p-8 rounded-custom border border-chocolate/10 hover:border-chocolate/30 transition-all cursor-pointer shadow-sm hover:shadow-md flex items-center justify-between">
+                <ScrollReveal key={loc.id} delay={idx * 100} className="h-full">
+                <div onClick={() => navigate('/locations')} className="h-full group bg-[#FFFBF2] p-8 rounded-custom border border-chocolate/10 hover:border-chocolate/30 transition-all active:scale-95 cursor-pointer shadow-sm hover:shadow-md flex items-center justify-between">
                     <div>
                         <div className="flex items-center gap-2 mb-2">
                             <span className="material-symbols-outlined text-chocolate">storefront</span>

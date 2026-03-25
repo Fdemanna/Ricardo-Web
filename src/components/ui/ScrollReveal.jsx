@@ -19,10 +19,10 @@ export default function ScrollReveal({ children, className = "", delay = 0, yOff
     return (
         <div 
             ref={ref} 
-            className={`transition-all duration-1000 ease-out ${className}`}
+            className={`transition-opacity transition-transform duration-500 ease-out ${className}`}
             style={{ 
                 opacity: isVisible ? 1 : 0, 
-                transform: isVisible ? 'translateY(0)' : `translateY(${yOffset}px)`,
+                transform: isVisible ? 'translateY(0)' : `translateY(${yOffset > 15 ? 15 : yOffset}px)`,
                 transitionDelay: `${delay}ms`
             }}
         >

@@ -1,4 +1,5 @@
 import MenuItemCard from './MenuItemCard';
+import ScrollReveal from '../ui/ScrollReveal';
 
 export default function MenuCategory({ category }) {
     return (
@@ -9,14 +10,15 @@ export default function MenuCategory({ category }) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 max-w-5xl mx-auto">
                 {category.items.map((item, idx) => (
-                    <MenuItemCard 
-                        key={idx} 
-                        title={item.title} 
-                        desc={item.desc} 
-                        price={item.price} 
-                        tags={item.tags}
-                        imageUrl={item.imageUrl || item.img} 
-                    />
+                    <ScrollReveal key={idx} delay={(idx % 2) * 100} yOffset={10}>
+                        <MenuItemCard 
+                            title={item.title} 
+                            desc={item.desc} 
+                            price={item.price} 
+                            tags={item.tags}
+                            imageUrl={item.imageUrl || item.img} 
+                        />
+                    </ScrollReveal>
                 ))}
             </div>
         </section>
