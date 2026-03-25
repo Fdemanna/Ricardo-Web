@@ -3,10 +3,10 @@
 ```yaml
 - generic [ref=e3]:
   - banner [ref=e4]:
-    - link "icecream Ricardo Gelato" [ref=e5] [cursor=pointer]:
+    - link "icecream Ricardo Gelats" [ref=e5] [cursor=pointer]:
       - /url: /
       - generic [ref=e6]: icecream
-      - heading "Ricardo Gelato" [level=1] [ref=e7]
+      - heading "Ricardo Gelats" [level=1] [ref=e7]
     - navigation [ref=e8]:
       - link "Inicio" [ref=e9] [cursor=pointer]:
         - /url: /
@@ -48,7 +48,7 @@
         - generic [ref=e52]:
           - generic [ref=e53]:
             - generic [ref=e54]: icecream
-            - heading "Ricardo Gelato" [level=2] [ref=e55]
+            - heading "Ricardo Gelats" [level=2] [ref=e55]
           - paragraph [ref=e56]: Ricardo Gelats es la heladería de toda la vida en la que generaciones de castellonenses disfrutan de helados artesanos, horchata, gofres y meriendas en familia.
         - generic [ref=e57]:
           - heading "Explorar" [level=4] [ref=e58]

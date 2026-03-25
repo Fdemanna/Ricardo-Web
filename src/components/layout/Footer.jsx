@@ -27,10 +27,6 @@ export default function Footer() {
                         <h4 className="font-serif font-bold text-lg mb-6 text-glacier">Contacto</h4>
                         <ul className="space-y-3 text-sm text-cream/80">
                             <li className="flex items-center justify-center md:justify-start gap-2">
-                                <span className="material-symbols-outlined text-sm">mail</span>
-                                hello@ricardogelato.es
-                            </li>
-                            <li className="flex items-center justify-center md:justify-start gap-2">
                                 <span className="material-symbols-outlined text-sm">call</span>
                                 +34 964 12 34 56
                             </li>

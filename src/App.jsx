@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/layout/Layout'
+import ScrollToTop from './components/layout/ScrollToTop'
 
 // Code-splitting: cada página se carga solo cuando el usuario la visita
 const HomePage = lazy(() => import('./pages/HomePage'))
@@ -8,6 +9,7 @@ const FlavorsPage = lazy(() => import('./pages/FlavorsPage'))
 const MenuPage = lazy(() => import('./pages/MenuPage'))
 const StoryPage = lazy(() => import('./pages/StoryPage'))
 const LocationsPage = lazy(() => import('./pages/LocationsPage'))
+const B2BPage = lazy(() => import('./pages/B2BPage'))
 const AdminPage = lazy(() => import('./pages/AdminPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -20,6 +22,7 @@ const PageLoader = () => (
 function App() {
     return (
         <Suspense fallback={<PageLoader />}>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
@@ -27,6 +30,7 @@ function App() {
                 <Route path="menu" element={<MenuPage />} />
                 <Route path="story" element={<StoryPage />} />
                 <Route path="locations" element={<LocationsPage />} />
+                <Route path="b2b" element={<B2BPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Route>
               <Route path="/admin" element={<AdminPage />} />

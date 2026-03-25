@@ -1,6 +1,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useMobileMenu } from '../../hooks/useMobileMenu';
 
+const navLinks = [
+    { name: 'Helados', path: '/flavors' },
+    { name: 'Carta', path: '/menu' },
+    { name: 'Historia', path: '/story' },
+    { name: 'Locales', path: '/locations' },
+    { name: 'Negocios', path: '/b2b' },
+];
+
 export default function Navigation() {
     const { isOpen, toggleMenu, closeMenu } = useMobileMenu(false);
     const location = useLocation();
@@ -8,55 +16,49 @@ export default function Navigation() {
 
     const handleContact = () => {
         closeMenu();
+
         if (location.pathname === '/locations') {
             document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            navigate('/locations#contacto');
-            setTimeout(() => {
-                document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
-            }, 400);
+            return;
         }
+
+        navigate('/locations#contacto');
+        setTimeout(() => {
+            document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+        }, 400);
     };
 
-    const navLinks = [
-        { name: 'Inicio', path: '/' },
-        { name: 'Nuestros Helados', path: '/flavors' },
-        { name: 'Carta', path: '/menu' },
-        { name: 'Sobre Nosotros', path: '/story' },
-        { name: 'Nuestros Locales', path: '/locations' },
-    ];
-
     return (
-        <header className="w-full px-6 py-4 lg:px-12 flex items-center justify-between sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-chocolate/10 select-none">
-            <Link to="/" onClick={closeMenu} className="flex items-center gap-3">
-                <img src="/logo.png" alt="Ricardo Gelats Logo" className="h-16 md:h-20 w-auto object-contain drop-shadow-sm" />
-                <h1 className="text-2xl font-bold tracking-tight text-chocolate font-serif hidden sm:block">Ricardo Gelato</h1>
+        <header className="w-full px-6 py-4 lg:px-12 flex items-center justify-between sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-chocolate/5 select-none h-20 md:h-24 transition-[height,background-color]">
+            <Link to="/" onClick={closeMenu} className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+                <img src="/logo.png" alt="Ricardo Gelats Logo" className="h-14 md:h-16 w-auto object-contain drop-shadow-sm" />
+                <h1 className="text-xl font-bold tracking-[0.05em] text-chocolate font-serif hidden sm:block">Ricardo Gelats</h1>
             </Link>
-            
-            <nav className="hidden lg:flex gap-10 items-center">
+
+            <nav className="hidden lg:flex gap-8 items-center">
                 {navLinks.map((link) => (
-                    <Link 
+                    <Link
                         key={link.path}
                         to={link.path}
-                        className={`text-sm font-medium uppercase tracking-wide transition-colors ${
-                            location.pathname === link.path ? 'text-chocolate font-bold border-b-2 border-chocolate' : 'text-chocolate/70 hover:text-chocolate'
-                        }`}
+                        className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 relative group py-2 ${location.pathname === link.path ? 'text-chocolate' : 'text-chocolate/60 hover:text-chocolate'
+                            }`}
                     >
                         {link.name}
+                        <span className={`absolute bottom-0 left-0 w-full h-[1px] bg-chocolate transition-transform duration-300 origin-left ${location.pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                            }`}></span>
                     </Link>
                 ))}
-                <button 
-                    onClick={handleContact} 
-                    className="btn-primary px-5 py-2 text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-md hover:shadow-lg transition-all hover:scale-105"
+                <button
+                    onClick={handleContact}
+                    className="ml-4 bg-chocolate text-cream px-6 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] shadow-sm hover:shadow-md hover:bg-chocolate-light transition-[background-color,transform,shadow] hover:-translate-y-0.5"
                 >
-                    <span className="material-symbols-outlined text-sm">call</span>
                     Contáctanos
                 </button>
             </nav>
 
             <div className="flex items-center gap-4 lg:hidden">
-                <button 
-                    className="text-chocolate flex items-center p-2 -mr-2 rounded-md hover:bg-chocolate/5 transition-colors focus:outline-none focus:ring-2 focus:ring-chocolate/50" 
+                <button
+                    className="text-chocolate flex items-center p-2 -mr-2 rounded-md hover:bg-chocolate/5 transition-colors focus:outline-none focus:ring-2 focus:ring-chocolate/50"
                     onClick={toggleMenu}
                     aria-expanded={isOpen}
                     aria-controls="mobile-menu"
@@ -70,7 +72,7 @@ export default function Navigation() {
             {isOpen && (
                 <div id="mobile-menu" className="absolute top-full left-0 w-full bg-cream border-b border-chocolate/10 flex flex-col p-6 gap-4 lg:hidden shadow-xl animate-in fade-in slide-in-from-top-4">
                     {navLinks.map((link) => (
-                        <Link 
+                        <Link
                             key={link.path}
                             to={link.path}
                             onClick={closeMenu}
@@ -79,8 +81,8 @@ export default function Navigation() {
                             {link.name}
                         </Link>
                     ))}
-                    <button 
-                        onClick={handleContact} 
+                    <button
+                        onClick={handleContact}
                         className="btn-primary w-full py-3 font-bold text-base flex items-center justify-center gap-2 mt-2"
                     >
                         <span className="material-symbols-outlined text-sm">call</span>

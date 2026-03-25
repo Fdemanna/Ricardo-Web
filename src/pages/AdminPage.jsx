@@ -6,10 +6,10 @@ import MenuTab from '../components/admin/tabs/MenuTab';
 
 export default function AdminPage() {
     const { user, loading: authLoading, login, logout } = useAuth();
-    
+
     // --- Tabs State ---
     const [activeTab, setActiveTab] = useState('flavors'); // 'flavors' | 'menu'
-    
+
     // --- Auth Login State ---
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -42,7 +42,7 @@ export default function AdminPage() {
                     <input type="email" placeholder="Correo electrónico" className="w-full mb-3 rounded-md border-chocolate/20 py-3" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <input type="password" placeholder="Contraseña" className="w-full mb-6 rounded-md border-chocolate/20 py-3" value={password} onChange={(e) => setPassword(e.target.value)} required />
                     <button type="submit" className="w-full btn-primary py-3 rounded-custom font-bold">Ingresar</button>
-                    <p className="mt-4 text-center text-xs text-chocolate/50">Solo acceso autorizado para Ricardo Gelato.</p>
+                    <p className="mt-4 text-center text-xs text-chocolate/50">Solo acceso autorizado para Ricardo Gelats.</p>
                 </form>
             </div>
         );
@@ -55,16 +55,16 @@ export default function AdminPage() {
                     <span className="material-symbols-outlined">shield_person</span>
                     Admin Panel
                 </h1>
-                
+
                 {/* Navigation Tabs */}
                 <div className="hidden md:flex bg-cream/10 rounded-full p-1 border border-cream/20">
-                    <button 
+                    <button
                         onClick={() => setActiveTab('flavors')}
                         className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${activeTab === 'flavors' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
                     >
                         🍦 Helados
                     </button>
-                    <button 
+                    <button
                         onClick={() => setActiveTab('menu')}
                         className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${activeTab === 'menu' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
                     >
@@ -84,13 +84,13 @@ export default function AdminPage() {
 
             {/* Mobile Tabs Fallback */}
             <div className="md:hidden flex bg-chocolate/5 p-2">
-                <button 
+                <button
                     onClick={() => setActiveTab('flavors')}
                     className={`flex-1 py-3 text-center font-bold text-sm transition-all ${activeTab === 'flavors' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
                 >
                     🍦 Helados
                 </button>
-                <button 
+                <button
                     onClick={() => setActiveTab('menu')}
                     className={`flex-1 py-3 text-center font-bold text-sm transition-all ${activeTab === 'menu' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
                 >

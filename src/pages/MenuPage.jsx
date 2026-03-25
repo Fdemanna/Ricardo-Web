@@ -5,7 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import PageHeader from '../components/layout/PageHeader';
 
 export default function MenuPage() {
-    useDocumentTitle('Carta y Cafetería · Ricardo Gelats');
+    useDocumentTitle('Carta · Ricardo Gelats');
     const { data: menuItems, loading } = useFirebaseCollection('menu_items');
 
     const categories = useMemo(() => {
