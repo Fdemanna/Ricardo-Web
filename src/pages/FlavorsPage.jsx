@@ -31,7 +31,7 @@ export default function FlavorsPage() {
         <div className="bg-cream min-h-screen">
             <PageHeader
                 overline="Carta"
-                title="Nuestros helados artesanale"
+                title="Nuestros helados artesanales"
                 description="En nuestra carta encontrarás una cuidada selección de helados artesanales, elaborados con ingredientes de calidad y una amplia variedad de sabores para disfrutar en cualquier momento del día."
             />
 

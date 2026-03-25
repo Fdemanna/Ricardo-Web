@@ -1,6 +1,6 @@
 import HeroSection from '../components/home/HeroSection';
 import LocationPreviews from '../components/home/LocationPreviews';
-import FlavorOfTheMonth from '../components/home/FlavorOfTheMonth';
+import ArtisanalQuality from '../components/home/ArtisanalQuality';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export default function HomePage() {
@@ -9,7 +9,7 @@ export default function HomePage() {
         <div className="flex flex-col">
             <HeroSection />
             <LocationPreviews />
-            <FlavorOfTheMonth />
+            <ArtisanalQuality />
         </div>
     );
 }

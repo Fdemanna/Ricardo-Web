@@ -1,5 +1,5 @@
 import HistorySection from '../components/story/HistorySection';
-import MasterMakerSection from '../components/story/MasterMakerSection';
+import PhilosophySection from '../components/story/PhilosophySection';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export default function StoryPage() {
@@ -7,7 +7,7 @@ export default function StoryPage() {
     return (
         <div className="w-full">
             <HistorySection />
-            <MasterMakerSection />
+            <PhilosophySection />
         </div>
     );
 }

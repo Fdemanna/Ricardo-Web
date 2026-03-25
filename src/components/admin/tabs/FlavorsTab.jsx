@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useFirebaseCollection } from '../../../hooks/useFirebaseCollection';
 import FlavorForm from '../FlavorForm';
-import CategoryManager from '../CategoryManager';
+import FlavorCategoryManager from '../FlavorCategoryManager';
 
 export default function FlavorsTab() {
     const { data: flavors, loading: flavorsLoading, addItem: addFlavor, updateItem: updateFlavor, deleteItem: deleteFlavor } = useFirebaseCollection('flavors');
@@ -123,7 +123,7 @@ export default function FlavorsTab() {
                     </table>
                 </div>
             )}
-            <CategoryManager />
+            <FlavorCategoryManager />
 
             {showFlavorForm && (
                 <FlavorForm 
