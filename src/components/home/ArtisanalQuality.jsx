@@ -8,7 +8,7 @@ export default function ArtisanalQuality() {
                 <div className="w-full lg:w-1/2 relative">
                     <ScrollReveal>
                         <div className="aspect-square rounded-custom overflow-hidden relative z-10 shadow-2xl">
-                            <div className="w-full h-full bg-center bg-cover transform transition-transform duration-700 hover:scale-110" style={{backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG6H35QEYOKWv4r8wJBj09hcDs7YwU4aTK-EX2rqGNyFps_ghIUhM5703P1ClgT6xl57g4GIy7545UcUniMqAV2uVmJRQBk6Nslw9wrkchNkUYc-PEmBfNPVmtukTFKjSmAAzXHkzIDFeaW899nPJN_WEqEOWgELbbo0lfmIsG7pc6FcPe88eGUr3gZjhO3dK4AWanCD7FD36Dqic3EPtEt3x3Pxgl_QJtHqbKID3-seCTKBmeGovVukL-2IvrOTvgcaRkkoyPivo")'}}></div>
+                            <div className="w-full h-full bg-center bg-cover transform transition-transform duration-700 hover:scale-110" style={{backgroundImage: 'url(/helado-quality.jpeg)'}}></div>
                         </div>
                     </ScrollReveal>
                     <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-glacier rounded-full z-0 opacity-50 blur-xl"></div>

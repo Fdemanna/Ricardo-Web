@@ -42,7 +42,7 @@ export default function HeroSection() {
                         </div>
                     </div>
                     <div className="relative h-64 lg:h-auto min-h-[400px] order-1 lg:order-2 overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105" style={{backgroundImage: 'url(/helado-home.png)'}}></div>
+                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105" style={{backgroundImage: 'url(/helado-home1.png)'}}></div>
                         {/* Enhanced Vignette/Radial Overlay */}
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(62,39,35,0.4)_100%)]"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-chocolate/30 to-transparent"></div>
