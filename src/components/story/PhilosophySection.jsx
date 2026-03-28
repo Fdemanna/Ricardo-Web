@@ -12,7 +12,7 @@ export default function PhilosophySection() {
                                 <ImageWithFallback 
                                     loading="lazy" 
                                     className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700" 
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY1-xBy20k7HFGXprGzd-epzm2gZ0nT5CTczkVPK-TCaEa9tKXdQHxCq5HZEdedNQ0-jCWGy82jZW_kKE73_prkq7vzbZxnnD5qYi6reOh1RlC52GABXj2G_kwMnJSXxI2O2S0W1SpJbWp7XRm9WaOS47afb6QfZmDGlH7BeVDaGmh178tcVFuhir5jBQns4RjAGBNjdbbttBbHHgLQMk1mUZs0d0tzpBL5R3bGZnqP9n0bLuqWzeT90lJ9LDDyloUquNSf6UhunQ" 
+                                    src="/historia-letrero.jpg"
                                     alt="Artesanía Ricardo Gelats" 
                                     fallbackIcon="icecream" 
                                 />

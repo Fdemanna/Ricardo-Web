@@ -30,10 +30,14 @@ export default function AdminPage() {
     if (!user) {
         return (
             <div className="min-h-screen bg-cream flex items-center justify-center px-4 relative">
-                <div className="absolute top-6 left-6">
-                    <Link to="/" className="flex items-center gap-2 text-chocolate/80 hover:text-chocolate font-bold transition-colors">
-                        <span className="material-symbols-outlined">arrow_back</span>
+                <div className="absolute top-6 left-6 flex flex-col sm:flex-row gap-4">
+                    <Link to="/" className="flex items-center gap-2 text-chocolate/80 hover:text-chocolate font-bold transition-colors text-sm">
+                        <span className="material-symbols-outlined text-[18px]">arrow_back</span>
                         Volver a la web
+                    </Link>
+                    <Link to="/carta" className="flex items-center gap-2 text-chocolate/80 hover:text-chocolate font-bold transition-colors text-sm">
+                        <span className="material-symbols-outlined text-[18px]">restaurant_menu</span>
+                        Ver Carta
                     </Link>
                 </div>
                 <form onSubmit={handleLogin} className="bg-white p-8 rounded-custom shadow-xl w-full max-w-md border border-chocolate/5">
@@ -72,13 +76,17 @@ export default function AdminPage() {
                     </button>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <Link to="/" className="hidden sm:flex bg-cream/5 hover:bg-cream/15 px-4 py-2 rounded-full text-xs font-bold transition-colors items-center gap-2 border border-cream/20">
+                <div className="flex items-center gap-2 sm:gap-4">
+                    <Link to="/" className="flex bg-cream/5 hover:bg-cream/15 px-3 py-2 rounded-full text-[10px] font-bold transition-colors items-center gap-2 border border-cream/20 whitespace-nowrap">
                         <span className="material-symbols-outlined text-[14px]">storefront</span>
-                        Ver Web
+                        <span className="hidden xs:inline">Web</span>
+                    </Link>
+                    <Link to="/carta" className="flex bg-cream/5 hover:bg-cream/15 px-3 py-2 rounded-full text-[10px] font-bold transition-colors items-center gap-2 border border-cream/20 whitespace-nowrap">
+                        <span className="material-symbols-outlined text-[14px]">restaurant_menu</span>
+                        <span className="hidden xs:inline">Carta</span>
                     </Link>
                     <span className="hidden lg:inline text-sm font-medium opacity-80 border-l border-cream/20 pl-4 ml-2">{user.email}</span>
-                    <button onClick={logout} className="bg-cream/10 hover:bg-cream/20 px-4 py-2 rounded-full text-xs font-bold transition-colors">Salir</button>
+                    <button onClick={logout} className="bg-cream/10 hover:bg-cream/20 px-3 py-2 rounded-full text-[10px] font-bold transition-colors">Salir</button>
                 </div>
             </header>
 
