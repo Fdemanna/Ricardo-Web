@@ -1,6 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function ImageModal({ isOpen, onClose, imageUrl, title }) {
+    const modalRef = useRef(null);
+
+    // Cerrar con mousedown fuera del modal
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (modalRef.current && !modalRef.current.contains(event.target)) {
+                onClose();
+            }
+        };
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen, onClose]);
+
     // Cerrar con la tecla Escape
     useEffect(() => {
         const handleEsc = (e) => {
@@ -15,11 +34,10 @@ export default function ImageModal({ isOpen, onClose, imageUrl, title }) {
     return (
         <div 
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-chocolate/40 backdrop-blur-md animate-in fade-in duration-300 overscroll-behavior-contain"
-            onClick={onClose}
         >
             <div 
+                ref={modalRef}
                 className="relative max-w-2xl w-full bg-cream rounded-custom overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300"
-                onClick={(e) => e.stopPropagation()}
             >
                 {/* Botón de cerrar */}
                 <button 

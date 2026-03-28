@@ -1,11 +1,22 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import MenuCategory from '../components/menu/MenuCategory';
 import { useFirebaseCollection } from '../hooks/useFirebaseCollection';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import PageHeader from '../components/layout/PageHeader';
 
 export default function MenuPage() {
-    useDocumentTitle('Carta · Ricardo Gelats');
+    useDocumentTitle('Carta Completa · Ricardo Gelats');
+
+    // SEO: Evitar que la carta sea indexada por buscadores
+    useEffect(() => {
+        const meta = document.createElement('meta');
+        meta.name = 'robots';
+        meta.content = 'noindex, nofollow';
+        document.head.appendChild(meta);
+        return () => {
+            document.head.removeChild(meta);
+        };
+    }, []);
     const { data: menuItems, loading } = useFirebaseCollection('menu_items');
 
     const categories = useMemo(() => {

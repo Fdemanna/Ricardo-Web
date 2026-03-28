@@ -3,7 +3,7 @@ import { useMobileMenu } from '../../hooks/useMobileMenu';
 
 const navLinks = [
     { name: 'Helados', path: '/flavors' },
-    { name: 'Carta', path: '/menu' },
+    { name: 'Productos', path: '/productos' },
     { name: 'Historia', path: '/story' },
     { name: 'Locales', path: '/locations' },
     { name: 'Negocios', path: '/b2b' },

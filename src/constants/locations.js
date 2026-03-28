@@ -10,13 +10,13 @@ export const LOCATIONS_DATA = [
         district: "Centro",
         schedules: [
             { days: "Domingos a Jueves", hours: "10:00 - 23:00" },
-            { days: "Viernes y Sábado", hours: "10:00 - 1:30" },
+            { days: "Viernes y Sábado", hours: "10:00 - 1:00" },
         ]
     },
     {
         id: 2,
         shop: "Av. Rei En Jaume, 108",
-        name: "Heladería Ricardo",
+        name: "Ricardo Gelats",
         address: "Castellón de la Plana, 12001",
         img: "/local-108.jpg",
         mapLink: "https://maps.app.goo.gl/mabVADnoVtE8QH9s5",
@@ -24,7 +24,7 @@ export const LOCATIONS_DATA = [
         district: "Centro",
         schedules: [
             { days: "Domingos a Jueves", hours: "07:00 - 23:00" },
-            { days: "Viernes y Sábado", hours: "07:00 - 1:30" }
+            { days: "Viernes y Sábado", hours: "07:00 - 1:00" }
         ]
     }
 ];

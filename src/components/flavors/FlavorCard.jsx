@@ -1,8 +1,12 @@
+import { getDirectDriveLink } from '../../utils/imageUtils';
+
 export default function FlavorCard({ title, desc, img, tags = [] }) {
+    const displayImg = getDirectDriveLink(img);
+
     return (
         <div className="group flex flex-col bg-white rounded-custom overflow-hidden shadow-sm border border-chocolate/5 hover:scale-[1.03] transition-all duration-300">
-            <div className="relative h-64 shrink-0 overflow-hidden bg-cream/50 relative">
-                <img src={img} loading="lazy" alt={title} className="absolute inset-0 w-full h-full object-cover" />
+            <div className="relative h-64 shrink-0 overflow-hidden bg-cream/50">
+                <img src={displayImg} loading="lazy" referrerPolicy="no-referrer" alt={title} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute top-4 right-4"><span className="bg-glacier/90 backdrop-blur text-[10px] font-bold px-3 py-1 rounded-full text-chocolate uppercase border border-chocolate/10">Casero</span></div>
             </div>
             <div className="p-6 bg-white flex-1 flex flex-col">

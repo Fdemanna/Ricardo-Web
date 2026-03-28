@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import ImageModal from '../ui/ImageModal';
+import { getDirectDriveLink } from '../../utils/imageUtils';
 
 export default function MenuItemCard({ title, desc, price, tags = [], imageUrl }) {
     const [showPreview, setShowPreview] = useState(false);
+    const displayImageUrl = getDirectDriveLink(imageUrl);
     
     // Ensuring numeric string forces 2 decimals and uses European comma format (e.g. 2 -> 2,00)
     const formattedPrice = !isNaN(parseFloat(price)) ? parseFloat(price).toFixed(2).replace('.', ',') : price;
@@ -43,7 +45,7 @@ export default function MenuItemCard({ title, desc, price, tags = [], imageUrl }
                 <ImageModal 
                     isOpen={showPreview} 
                     onClose={() => setShowPreview(false)} 
-                    imageUrl={imageUrl} 
+                    imageUrl={displayImageUrl} 
                     title={title} 
                 />
             )}

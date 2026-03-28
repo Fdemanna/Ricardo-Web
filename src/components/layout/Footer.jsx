@@ -19,7 +19,7 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm text-cream/80">
                             <li><Link to="/story" className="hover:text-glacier transition-colors">Sobre Nosotros</Link></li>
                             <li><Link to="/flavors" className="hover:text-glacier transition-colors">Nuestros Helados</Link></li>
-                            <li><Link to="/menu" className="hover:text-glacier transition-colors">Carta / Cafetería</Link></li>
+                            <li><Link to="/productos" className="hover:text-glacier transition-colors">Nuestros Productos</Link></li>
                             <li><Link to="/locations" className="hover:text-glacier transition-colors">Nuestros Locales</Link></li>
                         </ul>
                     </div>
