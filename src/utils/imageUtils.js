@@ -24,10 +24,7 @@ export const getDirectDriveLink = (url) => {
         const match = url.match(pattern);
         if (match && match[1]) {
             const fileId = match[1];
-            // Este endpoint (lh3) es el más estable para embeber imágenes de Drive directamente
-            // No requiere export=view ni redirige tanto como drive.google.com/uc
             const directLink = `https://lh3.googleusercontent.com/d/${fileId}`;
-            console.log(`[Drive Converter] ID detected: ${fileId}. Final URL: ${directLink}`);
             return directLink;
         }
     }

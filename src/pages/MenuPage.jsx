@@ -46,6 +46,14 @@ export default function MenuPage() {
         const finalCategories = Object.values(grouped).filter(cat => {
             const config = catConfigMap[cat.name.trim().toLowerCase()];
             if (config && config.isVisible === false) return false;
+
+            // Sort items inside this category by 'order' property
+            cat.items.sort((a, b) => {
+                const orderA = a.order !== undefined ? a.order : 999;
+                const orderB = b.order !== undefined ? b.order : 999;
+                return orderA - orderB;
+            });
+
             return true;
         }).sort((a, b) => {
             const configA = catConfigMap[a.name.trim().toLowerCase()];

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import ImageWithFallback from './ImageWithFallback';
 
 export default function ImageModal({ isOpen, onClose, imageUrl, title }) {
     const modalRef = useRef(null);
@@ -50,11 +51,9 @@ export default function ImageModal({ isOpen, onClose, imageUrl, title }) {
 
                 {/* Imagen */}
                 <div className="aspect-[4/3] w-full relative">
-                    <img 
+                    <ImageWithFallback 
                         src={imageUrl} 
                         alt={title} 
-                        width={800}
-                        height={600}
                         className="w-full h-full object-cover"
                     />
                 </div>

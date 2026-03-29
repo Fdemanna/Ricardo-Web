@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getDirectDriveLink } from '../../utils/imageUtils';
 
 export default function ImageWithFallback({ src, alt, className, fallbackIcon = 'broken_image', ...props }) {
     const [error, setError] = useState(false);
@@ -11,12 +12,15 @@ export default function ImageWithFallback({ src, alt, className, fallbackIcon = 
         );
     }
 
+    const directSrc = getDirectDriveLink(src);
+
     return (
         <img
-            src={src}
+            src={directSrc}
             alt={alt}
             className={className}
             onError={() => setError(true)}
+            referrerPolicy="no-referrer"
             {...props}
         />
     );

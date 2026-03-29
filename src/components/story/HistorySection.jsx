@@ -1,4 +1,5 @@
 import ScrollReveal from '../ui/ScrollReveal';
+import ImageWithFallback from '../ui/ImageWithFallback';
 
 export default function HistorySection() {
     return (
@@ -29,7 +30,11 @@ export default function HistorySection() {
                     <ScrollReveal delay={200} xOffset={30}>
                         <div className="absolute -inset-4 bg-glacier rounded-custom -z-10 transform rotate-2 group-hover:rotate-1 transition-transform duration-700"></div>
                         <div className="relative h-[500px] lg:h-[600px] rounded-custom overflow-hidden shadow-2xl">
-                            <img loading="lazy" width="800" height="600" className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlar6EfdjAg7bEucfdePeINWhRJSf7rZUqejUAt5suE43X9FIHojDEoWONn2Rp6DEOl4V79vcUI4RnU9WvpfP0-kgKOHJyoJZ_06S1Toyu7x2BMRJtPqtJGyJk4qfNfBjSrc9F69ih0vO6JNL-aw-GJPYYQ4Xmca2L2RSu6iSFWIGoLEIvg3yya2S2cVck8dmenKHBQTngpNXKHFZQI4MqZrsnXhFHB7Nx6w0FiJbZHrtFo2cyd5-sP8fBcH2SrcrU_JRS6LYm1-8" alt="Tradición Ricardo Gelats"/>
+                            <ImageWithFallback 
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlar6EfdjAg7bEucfdePeINWhRJSf7rZUqejUAt5suE43X9FIHojDEoWONn2Rp6DEOl4V79vcUI4RnU9WvpfP0-kgKOHJyoJZ_06S1Toyu7x2BMRJtPqtJGyJk4qfNfBjSrc9F69ih0vO6JNL-aw-GJPYYQ4Xmca2L2RSu6iSFWIGoLEIvg3yya2S2cVck8dmenKHBQTngpNXKHFZQI4MqZrsnXhFHB7Nx6w0FiJbZHrtFo2cyd5-sP8fBcH2SrcrU_JRS6LYm1-8" 
+                                alt="Tradición Ricardo Gelats"
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
                             <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/60 to-transparent w-full text-white font-serif italic text-xl">
                                 "Con el paso de los años, aquella horchatería de barrio fue incorporando helados y granizados artesanos, hasta convertirse en la heladería clásica."
                             </div>

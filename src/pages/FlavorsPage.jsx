@@ -6,26 +6,55 @@ import PageHeader from '../components/layout/PageHeader';
 
 export default function FlavorsPage() {
     useDocumentTitle('Nuestros Helados · Ricardo Gelats');
-    const { data: flavors, loading } = useFirebaseCollection('flavors');
+    const { data: flavors, loading: flavorsLoading } = useFirebaseCollection('flavors');
+    const { data: rawCategories, loading: catLoading } = useFirebaseCollection('categories', 'order', 'asc');
 
+    const loading = flavorsLoading || catLoading;
+    
     const categories = useMemo(() => {
+        // Build category config map for ordering
+        const catConfigMap = rawCategories.reduce((acc, c) => {
+            acc[(c.name || '').trim().toLowerCase()] = c;
+            return acc;
+        }, {});
+
         const activeFlavors = flavors.filter(f => f.isAvailable);
 
         const grouped = activeFlavors.reduce((acc, flavor) => {
-            const cat = flavor.category;
-            if (!acc[cat]) {
-                acc[cat] = {
-                    id: cat,
+            const cat = flavor.category || 'Sin categoría';
+            // Normalize category name for matching with config
+            const normalizedCat = cat.trim().toLowerCase();
+            
+            if (!acc[normalizedCat]) {
+                acc[normalizedCat] = {
+                    id: normalizedCat,
                     name: cat,
                     items: []
                 };
             }
-            acc[cat].items.push(flavor);
+            acc[normalizedCat].items.push(flavor);
             return acc;
         }, {});
 
-        return Object.values(grouped);
-    }, [flavors]);
+        // Sort items inside each category by their order
+        Object.values(grouped).forEach(catObj => {
+            catObj.items.sort((a, b) => {
+                const orderA = a.order !== undefined ? a.order : 999;
+                const orderB = b.order !== undefined ? b.order : 999;
+                return orderA - orderB;
+            });
+        });
+
+        // Convert to array and sort the categories themselves
+        return Object.values(grouped).sort((a, b) => {
+            const configA = catConfigMap[a.id];
+            const configB = catConfigMap[b.id];
+            const orderA = configA?.order !== undefined ? configA.order : 999;
+            const orderB = configB?.order !== undefined ? configB.order : 999;
+            if (orderA === orderB) return a.name.localeCompare(b.name);
+            return orderA - orderB;
+        });
+    }, [flavors, rawCategories]);
 
     return (
         <div className="bg-cream min-h-screen">

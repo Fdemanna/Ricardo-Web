@@ -5,6 +5,7 @@ import { db } from '../lib/firebase';
 export function useFirebaseCollection(collectionName, orderField = 'createdAt', orderDirection = 'desc') {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const getData = useCallback(() => {
         let q;
@@ -20,8 +21,9 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
             }));
             setData(itemsData);
             setLoading(false);
-        }, (error) => {
-            console.error(`Error fetching ${collectionName}:`, error);
+        }, (err) => {
+            console.error(`Error fetching ${collectionName}:`, err);
+            setError(err);
             setLoading(false);
         });
 
@@ -75,5 +77,5 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
         }
     };
 
-    return { data, loading, addItem, updateItem, deleteItem };
+    return { data, loading, error, addItem, updateItem, deleteItem };
 }

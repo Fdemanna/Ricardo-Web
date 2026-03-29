@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import FlavorsTab from '../components/admin/tabs/FlavorsTab';
-import MenuTab from '../components/admin/tabs/MenuTab';
+
+const FlavorsTab = lazy(() => import('../components/admin/tabs/FlavorsTab'));
+const MenuTab = lazy(() => import('../components/admin/tabs/MenuTab'));
 
 export default function AdminPage() {
     const { user, loading: authLoading, login, logout } = useAuth();
@@ -107,8 +108,10 @@ export default function AdminPage() {
             </div>
 
             <main className="section-container mt-12">
-                {activeTab === 'flavors' && <FlavorsTab />}
-                {activeTab === 'menu' && <MenuTab />}
+                <Suspense fallback={<div className="flex justify-center p-20"><div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div></div>}>
+                    {activeTab === 'flavors' && <FlavorsTab />}
+                    {activeTab === 'menu' && <MenuTab />}
+                </Suspense>
             </main>
         </div>
     );

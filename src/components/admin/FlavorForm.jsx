@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
+import ImageWithFallback from '../ui/ImageWithFallback';
 import { useFirebaseCollection } from '../../hooks/useFirebaseCollection';
 import { AVAILABLE_TAGS } from '../../constants/allergens';
 
-export default function FlavorForm({ initialData = null, onSubmit, onCancel }) {
-    const { data: categories, loading: catLoading } = useFirebaseCollection('categories', 'name', 'asc');
+export default function FlavorForm({ initialData = null, categories = [], onSubmit, onCancel }) {
+    const catLoading = false; 
+    // const { data: categories, loading: catLoading } = useFirebaseCollection('categories', 'name', 'asc');
     
     const [formData, setFormData] = useState(() => ({
         title: initialData?.title || '',
         desc: initialData?.desc || '',
         category: initialData?.category || '',
         img: initialData?.img || '',
-        tags: initialData?.tags || []
+        tags: initialData?.tags || [],
+        order: initialData?.order !== undefined ? initialData.order : 999
     }));
 
     const [forceCustomCategory, setForceCustomCategory] = useState(false);
@@ -163,7 +166,13 @@ export default function FlavorForm({ initialData = null, onSubmit, onCancel }) {
                             placeholder="https://..."
                         />
                         {formData.img && (
-                            <img src={formData.img} alt="Vista previa" className="mt-2 h-20 w-20 object-cover rounded-md border border-chocolate/10 shadow-sm" />
+                            <div className="mt-2 h-20 w-20 overflow-hidden rounded-md border border-chocolate/10 shadow-sm">
+                                <ImageWithFallback 
+                                    src={formData.img} 
+                                    alt="Vista previa" 
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
                         )}
                     </div>
 

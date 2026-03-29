@@ -1,5 +1,6 @@
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import ImageWithFallback from '../components/ui/ImageWithFallback';
 
 export default function ProductsPage() {
     useDocumentTitle('Nuestros Productos · Ricardo Gelats');
@@ -18,7 +19,7 @@ export default function ProductsPage() {
                 <ScrollReveal>
                     <div className="overflow-hidden rounded-custom shadow-2xl shadow-chocolate/5">
                         <div className="flex min-h-[520px] flex-col gap-6 items-center justify-center p-8 text-center relative group overflow-hidden">
-                            <img 
+                            <ImageWithFallback 
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0qA7AKT6_gxgNZptLlhHe-38FjHRsthdSb5vJwIb8z3HOOreZ76SP8IssoPwmfx8bCTFakqOzmRQ1hnoIXR_HE1b8I8CYlCFgysHt7TqexQ6Aqnc-_9I0N7Yh96rIxv1csUkKaYs3IoXrc3oyO0cABHN6SZBeVVtK1tGU9OvYZzATnG9e4FRN6p9SELBQ0UhP3h0xRAnK-bWlAmnrMH0kD-xlvS9M20FmkxFgBsiy_pAv9_DIxjVFFpSEblZKnMg5HxISA-napJY"
                                 alt="Nuestras Especialidades"
                                 fetchPriority="high"
@@ -59,7 +60,7 @@ export default function ProductsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                     {/* Helados (Highlight Card) */}
                     <div className="md:col-span-8 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[450px]">
-                        <img 
+                        <ImageWithFallback 
                             src="/helado-producto.JPG"
                             alt="Helados Artesanos"
                             fetchPriority="high"
@@ -82,7 +83,7 @@ export default function ProductsPage() {
 
                     {/* Gofres */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[450px]">
-                        <img 
+                        <ImageWithFallback 
                             src="/gofre.png"
                             alt="Gofres"
                             fetchPriority="high"
@@ -102,7 +103,7 @@ export default function ProductsPage() {
 
                     {/* Yogurt Helado */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
-                        <img 
+                        <ImageWithFallback 
                             src="/yogurt-helado.JPG"
                             alt="Yogurt Helado"
                             fetchPriority="high"
@@ -122,7 +123,7 @@ export default function ProductsPage() {
 
                     {/* Granizados */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
-                        <img 
+                        <ImageWithFallback 
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeeyzdJWUvBPrr0L7usyx_0dpVc9u8Ld6oCbNiugo2kpD4UBB32_rV_g9o8loNfk8JZnRRc3zpqJXrPJ2Brtk2yI8asJvCuU84sLOeSZ62WEwUFs01cI4xXDvnlctZe_Di5k7khiImPnonlapIav1UiC18EZyBZU2N77r8uKyRbSrjCIq0vF2-E8789msCEMueUM83jCFarFDwqp1pcLAioN8Ps3SmS1A4L0QHZokPw-tBLjAtQHT_3GDtle6bxnAG1F7wPFipA10"
                             alt="Granizados"
                             fetchPriority="high"
@@ -142,7 +143,7 @@ export default function ProductsPage() {
 
                     {/* Creps */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
-                        <img 
+                        <ImageWithFallback 
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhEYcqZa1ZtxKCWUX4MJJGWBZqRdnplEuJnu2ENj8FPh7TJIUcrsVaXZ1wOCIv4vuQCu85p2Uppg6cZI8s_epMKdNcjrtSw3oScqwgN2McPm1ltZ2-p2OqqPKbJILaYU4jV12rd7QJRH-aftOt_u8UGflxSTDi0uiDC8gAuonqaxtjAoWX2HA_MRLnk8_goUIT60qreWUmqjlYu0Ll80uatMgpf0XEGZLHJFaB5yQY9aYVD1Hkm4rn2K4yr6-UdLLyI4foV0Q4_c"
                             alt="Creps"
                             fetchPriority="high"
@@ -162,7 +163,7 @@ export default function ProductsPage() {
 
                     {/* Batidos (Vertical Card) */}
                     <div className="md:col-span-6 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[550px]">
-                        <img 
+                        <ImageWithFallback 
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-ravHvj5TQtPzwcpEYopwfCKig7ehRNZPqflxzF4x0wmbn_DjAhyeXT6Ef6he23TMeTfdbBhp_tbeWXpHdQpb3xdTlTJW-TRE5Z87O_vD_iOxEnRgx8SSTsmzM6HGeEQppwpJBgKzxmpcSFRERhlBAYwAfjHIL4VOVVNRBrbsmaQTYdKzY7CkzlIOgxen7dga2LhQ4ldy12KWMvNravTOJlJTTao7TIWBZu46tLWCpGjkucwA2cMMI0vkpeG0dty2Z_-7dfGvI0A"
                             alt="Batidos"
                             fetchPriority="high"
@@ -183,7 +184,7 @@ export default function ProductsPage() {
 
                     {/* Bubble Tea (Vertical Card) */}
                     <div className="md:col-span-6 group relative overflow-hidden rounded-custom shadow-2xl shadow-chocolate/5 h-[550px]">
-                        <img 
+                        <ImageWithFallback 
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3PTbkVcbi9j86hpzi0g7Cmo6EmGH3GnEvGjCDOfX1u-fudxIT_Ms8l7D4-gvMVpPnjk-wagdNMVY9CKF51XArcM64BUanYbtMWlHokw7KiRzcp6Tec5YyyVszDZd1GxBk-8B69MZPFdsvN4jhNuaBmKzPUEOBaE6ppT-Px3u4OKQoaJbYl85sVVd_EcaBuxtW4Wb9Oks1rmk-2O_BH02egrWnYuLnDTLI1fpH62pwkQBl_FBkGQZMkasQgDw9oD3f9nKl4g26K08"
                             alt="Bubble Tea"
                             fetchPriority="high"

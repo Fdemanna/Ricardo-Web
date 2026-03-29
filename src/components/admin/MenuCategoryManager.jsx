@@ -52,16 +52,24 @@ export default function MenuCategoryManager() {
             newCategories.splice(draggedIndex, 1);
             newCategories.splice(dragOverIndex, 0, draggedItem);
 
-            await Promise.all(
-                newCategories.map((cat, i) => updateCategory(cat.id, { order: i }))
-            );
+            try {
+                const results = await Promise.all(
+                    newCategories.map((cat, i) => updateCategory(cat.id, { order: i }))
+                );
+                const failed = results.some(r => !r.success);
+                if (failed) alert("Error al guardar el nuevo orden. Recarga e inténtalo de nuevo.");
+            } catch {
+                alert("Error inesperado al reordenar. Revisa tu conexión.");
+            }
         }
         setDraggedIndex(null);
         setDragOverIndex(null);
     };
 
     const handleToggleVisibility = async (cat) => {
-        await updateCategory(cat.id, { isVisible: cat.isVisible !== false ? false : true });
+        const newValue = cat.isVisible !== false ? false : true;
+        const res = await updateCategory(cat.id, { isVisible: newValue });
+        if (!res.success) alert("Error al cambiar la visibilidad de la categoría. Revisa las reglas de Firebase.");
     };
 
     const handleDelete = async (id) => {
@@ -106,7 +114,7 @@ export default function MenuCategoryManager() {
                                 ${draggedIndex === index ? 'opacity-40 scale-[0.99] border-chocolate/50 bg-white' : ''}
                                 ${dragOverIndex === index && draggedIndex !== index ? 'border-chocolate border-dashed bg-chocolate/5' : ''}
                                 ${cat.isVisible === false && draggedIndex !== index ? 'bg-gray-50 border-gray-200 opacity-60' : 
-                                 (!draggedIndex && !dragOverIndex ? 'bg-[#FFFBF2] border-chocolate/10 hover:border-chocolate/30' : '')}
+                                 (draggedIndex === null && dragOverIndex === null ? 'bg-[#FFFBF2] border-chocolate/10 hover:border-chocolate/30' : '')}
                             `}
                         >
                             {editingId === cat.id ? (
