@@ -17,12 +17,17 @@ export default function ProductsPage() {
             <section className="px-4 py-8 md:px-20 lg:px-40 relative z-10">
                 <ScrollReveal>
                     <div className="overflow-hidden rounded-custom shadow-2xl shadow-chocolate/5">
-                        <div 
-                            className="flex min-h-[520px] flex-col gap-6 bg-cover bg-center bg-no-repeat items-center justify-center p-8 text-center relative group"
-                            style={{
-                                backgroundImage: `linear-gradient(rgba(62, 39, 35, 0.3), rgba(62, 39, 35, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuA0qA7AKT6_gxgNZptLlhHe-38FjHRsthdSb5vJwIb8z3HOOreZ76SP8IssoPwmfx8bCTFakqOzmRQ1hnoIXR_HE1b8I8CYlCFgysHt7TqexQ6Aqnc-_9I0N7Yh96rIxv1csUkKaYs3IoXrc3oyO0cABHN6SZBeVVtK1tGU9OvYZzATnG9e4FRN6p9SELBQ0UhP3h0xRAnK-bWlAmnrMH0kD-xlvS9M20FmkxFgBsiy_pAv9_DIxjVFFpSEblZKnMg5HxISA-napJY")`
-                            }}
-                        >
+                        <div className="flex min-h-[520px] flex-col gap-6 items-center justify-center p-8 text-center relative group overflow-hidden">
+                            <img 
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0qA7AKT6_gxgNZptLlhHe-38FjHRsthdSb5vJwIb8z3HOOreZ76SP8IssoPwmfx8bCTFakqOzmRQ1hnoIXR_HE1b8I8CYlCFgysHt7TqexQ6Aqnc-_9I0N7Yh96rIxv1csUkKaYs3IoXrc3oyO0cABHN6SZBeVVtK1tGU9OvYZzATnG9e4FRN6p9SELBQ0UhP3h0xRAnK-bWlAmnrMH0kD-xlvS9M20FmkxFgBsiy_pAv9_DIxjVFFpSEblZKnMg5HxISA-napJY"
+                                alt="Nuestras Especialidades"
+                                fetchPriority="high"
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div 
+                                className="absolute inset-0"
+                                style={{ background: `linear-gradient(rgba(62, 39, 35, 0.3), rgba(62, 39, 35, 0.6))` }}
+                            ></div>
                             <div className="absolute inset-0 bg-chocolate/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                             <div className="max-w-[850px] flex flex-col gap-6 relative z-10">
                                 <span className="text-cream/80 text-[10px] font-bold uppercase tracking-[0.4em] mb-2 drop-shadow-sm">Tradición Heladera desde 1950</span>
@@ -54,11 +59,15 @@ export default function ProductsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                     {/* Helados (Highlight Card) */}
                     <div className="md:col-span-8 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[450px]">
+                        <img 
+                            src="/helado-producto.JPG"
+                            alt="Helados Artesanos"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                            style={{
-                                backgroundImage: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDkuWGA2Ysvj1HngEY3pD3OS95qIlD7U9qxZOTl9Qdyn5B-kY4pDGCOIkBLNPwH-iLbzqv-1Dv8aSgCb9DYqIWW5vKtPFiUoxxpiRpk2ZdTwK-hOsFyT-2yewkyuTLeDz0YVX10mRciroEWMM7R09KcW1cdz21to6q6pcEwZMjpss2F9L1KxZ2A2HtPZusz_MoPJ05wbStH7vsap4YBInLl-YXkIrt_2NHp40wOcFoA5J9z3lpsuceX9jbdCCrFCzO9agnmkSqtQsQ")`
-                            }}
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
                         ></div>
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3 w-full">
                             <div className="flex items-center gap-3">
@@ -73,11 +82,15 @@ export default function ProductsPage() {
 
                     {/* Gofres */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[450px]">
+                        <img 
+                            src="/gofre.png"
+                            alt="Gofres"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                            style={{
-                                backgroundImage: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAWydjxILa5kUw-jXCiDfsljlATcmPnSEtG32n7BY_0IxFRIML1KdxX10o9LKsPnwItG5wsu4FJEGD24xiBj1FmAYvuC8wINwd59SP_xaakihhpgOlYF6vvgWHwARAGGQlWjp8mz6mTeEzttrnQz5ydv4tn-IDkCpxEmiCaSrD24r2ChR_LJJGv_jMwAtdccg5u4Xif0owVsB2ywP2O71GLwTF_oPxsmUmPKZWmsO3QbbzidmezW9h5rDK4p9-VmwuGMNbn8vVUNPI")`
-                            }}
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
                         ></div>
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
                             <h3 className="text-cream text-3xl font-bold font-serif italic mb-1">Gofres</h3>
@@ -87,13 +100,37 @@ export default function ProductsPage() {
                         </div>
                     </div>
 
+                    {/* Yogurt Helado */}
+                    <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
+                        <img 
+                            src="/yogurt-helado.JPG"
+                            alt="Yogurt Helado"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div 
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
+                        ></div>
+                        <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
+                            <h3 className="text-cream text-3xl font-bold font-serif italic mb-1">Yogurt Helado</h3>
+                            <p className="text-cream/80 text-base font-light font-sans tracking-tight">
+                                Natural, ligero y refrescante. Personalízalo con fruta fresca y toppings artesanos.
+                            </p>
+                        </div>
+                    </div>
+
                     {/* Granizados */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
+                        <img 
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeeyzdJWUvBPrr0L7usyx_0dpVc9u8Ld6oCbNiugo2kpD4UBB32_rV_g9o8loNfk8JZnRRc3zpqJXrPJ2Brtk2yI8asJvCuU84sLOeSZ62WEwUFs01cI4xXDvnlctZe_Di5k7khiImPnonlapIav1UiC18EZyBZU2N77r8uKyRbSrjCIq0vF2-E8789msCEMueUM83jCFarFDwqp1pcLAioN8Ps3SmS1A4L0QHZokPw-tBLjAtQHT_3GDtle6bxnAG1F7wPFipA10"
+                            alt="Granizados"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                            style={{
-                                backgroundImage: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeeyzdJWUvBPrr0L7usyx_0dpVc9u8Ld6oCbNiugo2kpD4UBB32_rV_g9o8loNfk8JZnRRc3zpqJXrPJ2Brtk2yI8asJvCuU84sLOeSZ62WEwUFs01cI4xXDvnlctZe_Di5k7khiImPnonlapIav1UiC18EZyBZU2N77r8uKyRbSrjCIq0vF2-E8789msCEMueUM83jCFarFDwqp1pcLAioN8Ps3SmS1A4L0QHZokPw-tBLjAtQHT_3GDtle6bxnAG1F7wPFipA10")`
-                            }}
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
                         ></div>
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
                             <h3 className="text-cream text-3xl font-bold font-serif italic mb-1">Granizados</h3>
@@ -105,11 +142,15 @@ export default function ProductsPage() {
 
                     {/* Creps */}
                     <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
+                        <img 
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhEYcqZa1ZtxKCWUX4MJJGWBZqRdnplEuJnu2ENj8FPh7TJIUcrsVaXZ1wOCIv4vuQCu85p2Uppg6cZI8s_epMKdNcjrtSw3oScqwgN2McPm1ltZ2-p2OqqPKbJILaYU4jV12rd7QJRH-aftOt_u8UGflxSTDi0uiDC8gAuonqaxtjAoWX2HA_MRLnk8_goUIT60qreWUmqjlYu0Ll80uatMgpf0XEGZLHJFaB5yQY9aYVD1Hkm4rn2K4yr6-UdLLyI4foV0Q4_c"
+                            alt="Creps"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                            style={{
-                                backgroundImage: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZhEYcqZa1ZtxKCWUX4MJJGWBZqRdnplEuJnu2ENj8FPh7TJIUcrsVaXZ1wOCIv4vuQCu85p2Uppg6cZI8s_epMKdNcjrtSw3oScqwgN2McPm1ltZ2-p2OqqPKbJILaYU4jV12rd7QJRH-aftOt_u8UGflxSTDi0uiDC8gAuonqaxtjAoWX2HA_MRLnk8_goUIT60qreWUmqjlYu0Ll80uatMgpf0XEGZLHJFaB5yQY9aYVD1Hkm4rn2K4yr6-UdLLyI4foV0Q4_c")`
-                            }}
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
                         ></div>
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
                             <h3 className="text-cream text-3xl font-bold font-serif italic mb-1">Creps</h3>
@@ -119,37 +160,45 @@ export default function ProductsPage() {
                         </div>
                     </div>
 
-                    {/* Batidos */}
-                    <div className="md:col-span-4 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[380px]">
+                    {/* Batidos (Vertical Card) */}
+                    <div className="md:col-span-6 group relative overflow-hidden rounded-custom shadow-xl shadow-chocolate/5 h-[550px]">
+                        <img 
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-ravHvj5TQtPzwcpEYopwfCKig7ehRNZPqflxzF4x0wmbn_DjAhyeXT6Ef6he23TMeTfdbBhp_tbeWXpHdQpb3xdTlTJW-TRE5Z87O_vD_iOxEnRgx8SSTsmzM6HGeEQppwpJBgKzxmpcSFRERhlBAYwAfjHIL4VOVVNRBrbsmaQTYdKzY7CkzlIOgxen7dga2LhQ4ldy12KWMvNravTOJlJTTao7TIWBZu46tLWCpGjkucwA2cMMI0vkpeG0dty2Z_-7dfGvI0A"
+                            alt="Batidos"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                            style={{
-                                backgroundImage: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-ravHvj5TQtPzwcpEYopwfCKig7ehRNZPqflxzF4x0wmbn_DjAhyeXT6Ef6he23TMeTfdbBhp_tbeWXpHdQpb3xdTlTJW-TRE5Z87O_vD_iOxEnRgx8SSTsmzM6HGeEQppwpJBgKzxmpcSFRERhlBAYwAfjHIL4VOVVNRBrbsmaQTYdKzY7CkzlIOgxen7dga2LhQ4ldy12KWMvNravTOJlJTTao7TIWBZu46tLWCpGjkucwA2cMMI0vkpeG0dty2Z_-7dfGvI0A")`
-                            }}
+                            className="absolute inset-0"
+                            style={{ background: `linear-gradient(0deg, rgba(62, 39, 35, 0.9) 0%, rgba(62, 39, 35, 0) 60%)` }}
                         ></div>
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
-                            <h3 className="text-cream text-3xl font-bold font-serif italic mb-1">Batidos</h3>
-                            <p className="text-cream/80 text-base font-light font-sans tracking-tight">
-                                Cremosos e intensos, elaborados al momento con tu helado favorito.
+                            <span className="bg-[#F4AF25] w-fit text-chocolate text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1.5 rounded-full shadow-lg mb-2 transform origin-left transition-transform duration-500 group-hover:scale-105">Refrescante</span>
+                            <h3 className="text-cream text-4xl font-bold font-serif italic mb-1">Batidos</h3>
+                            <p className="text-cream/80 text-lg font-light leading-relaxed">
+                                Cremosos e intensos, elaborados al momento con tu helado favorito y leche fresca.
                             </p>
                         </div>
                     </div>
 
-                    {/* Bubble Tea (Wide Card) */}
-                    <div className="md:col-span-12 group relative overflow-hidden rounded-custom shadow-2xl shadow-chocolate/5 h-[350px] border border-chocolate/5">
+                    {/* Bubble Tea (Vertical Card) */}
+                    <div className="md:col-span-6 group relative overflow-hidden rounded-custom shadow-2xl shadow-chocolate/5 h-[550px]">
+                        <img 
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3PTbkVcbi9j86hpzi0g7Cmo6EmGH3GnEvGjCDOfX1u-fudxIT_Ms8l7D4-gvMVpPnjk-wagdNMVY9CKF51XArcM64BUanYbtMWlHokw7KiRzcp6Tec5YyyVszDZd1GxBk-8B69MZPFdsvN4jhNuaBmKzPUEOBaE6ppT-Px3u4OKQoaJbYl85sVVd_EcaBuxtW4Wb9Oks1rmk-2O_BH02egrWnYuLnDTLI1fpH62pwkQBl_FBkGQZMkasQgDw9oD3f9nKl4g26K08"
+                            alt="Bubble Tea"
+                            fetchPriority="high"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                        />
                         <div 
-                            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-                            style={{
-                                backgroundImage: `linear-gradient(rgba(62, 39, 35, 0.2), rgba(62, 39, 35, 0.4)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3PTbkVcbi9j86hpzi0g7Cmo6EmGH3GnEvGjCDOfX1u-fudxIT_Ms8l7D4-gvMVpPnjk-wagdNMVY9CKF51XArcM64BUanYbtMWlHokw7KiRzcp6Tec5YyyVszDZd1GxBk-8B69MZPFdsvN4jhNuaBmKzPUEOBaE6ppT-Px3u4OKQoaJbYl85sVVd_EcaBuxtW4Wb9Oks1rmk-2O_BH02egrWnYuLnDTLI1fpH62pwkQBl_FBkGQZMkasQgDw9oD3f9nKl4g26K08")`
-                            }}
+                            className="absolute inset-0 bg-chocolate/20 transition-colors duration-500 group-hover:bg-chocolate/40"
                         ></div>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-12 gap-4">
-                            <div className="glass-card px-6 py-10 rounded-custom max-w-2xl flex flex-col items-center gap-4 border-white/10 hover:border-white/20 transition-all duration-500">
-                                <span className="bg-[#F4AF25] text-chocolate text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1.5 rounded-full shadow-lg mb-2">Divertido & Moderno</span>
-                                <h3 className="text-cream text-4xl md:text-5xl font-bold font-serif italic">Bubble Tea</h3>
+                        <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-8 pb-10">
+                            <div className="glass-card w-full px-6 py-10 rounded-custom flex flex-col items-center gap-4 border-white/10 hover:border-white/20 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 relative">
+                                <span className="absolute -top-3 bg-[#F4AF25] text-chocolate text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1 rounded-full shadow-lg">Premium</span>
+                                <h3 className="text-cream text-4xl font-bold font-serif italic mt-2">Bubble Tea</h3>
                                 <div className="h-px w-12 bg-cream/20" />
-                                <p className="text-cream/90 text-lg font-light leading-relaxed max-w-xl">
-                                    Un toque moderno en nuestra tradición. Perlas de sabor explosivo en una base de té premium infusionado.
+                                <p className="text-cream/90 text-sm md:text-base font-light leading-relaxed">
+                                    Un toque moderno en nuestra tradición. Perlas de sabor explosivo en una base de té infusionado.
                                 </p>
                             </div>
                         </div>
