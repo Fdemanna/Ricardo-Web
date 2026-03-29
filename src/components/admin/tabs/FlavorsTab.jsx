@@ -5,7 +5,15 @@ import FlavorForm from '../FlavorForm';
 import FlavorCategoryManager from '../FlavorCategoryManager';
 
 export default function FlavorsTab() {
-    const { data: flavors, loading: flavorsLoading, addItem: addFlavor, updateItem: updateFlavor, deleteItem: deleteFlavor } = useFirebaseCollection('flavors');
+    const { 
+        data: flavors, 
+        loading: flavorsLoading, 
+        addItem: addFlavor, 
+        updateItem: updateFlavor, 
+        deleteItem: deleteFlavor,
+        updateMultipleItems,
+        error
+    } = useFirebaseCollection('flavors');
     const { data: categories, loading: catLoading } = useFirebaseCollection('categories', 'name', 'asc');
     const [showFlavorForm, setShowFlavorForm] = useState(false);
     const [editingFlavor, setEditingFlavor] = useState(null);
@@ -75,19 +83,20 @@ export default function FlavorsTab() {
             const [movedItem] = items.splice(draggedIndex, 1);
             items.splice(dragOverIndex, 0, movedItem);
 
-            // Re-assign order based on new positions
+            // Prepare batch updates
             const updates = items.map((item, idx) => ({
                 id: item.id,
-                order: idx
+                data: { order: idx }
             }));
 
             try {
-                // Batch updates (async)
-                await Promise.all(updates.map(u => updateFlavor(u.id, { order: u.order })));
-                // alert("✅ Orden de sabores guardado correctamente.");
+                const result = await updateMultipleItems(updates);
+                if (!result.success) {
+                    alert("❌ Error al guardar el orden de los sabores.");
+                }
             } catch (err) {
                 console.error("Error updating flavors order:", err);
-                alert("❌ Error al guardar el orden de los sabores.");
+                alert("❌ Error de conexión al reordenar.");
             }
         }
 
@@ -135,6 +144,13 @@ export default function FlavorsTab() {
 
             {flavorsLoading ? (
                 <div className="flex justify-center p-20"><div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div></div>
+            ) : error ? (
+                <div className="bg-red-50 p-10 rounded-custom text-center border border-red-100 mb-8">
+                    <span className="material-symbols-outlined text-4xl text-red-400 mb-3 block">error_outline</span>
+                    <h3 className="text-lg font-bold text-red-800 mb-1">Error al cargar sabores</h3>
+                    <p className="text-red-600/80 text-sm max-w-md mx-auto mb-4">No se pudo conectar con la base de datos de sabores. Comprueba que los índices estén activos en Firebase.</p>
+                    <button onClick={() => window.location.reload()} className="text-red-800 font-bold underline text-sm hover:text-red-900 transition-colors">Reintentar</button>
+                </div>
             ) : flavors.length === 0 ? (
                 <div className="bg-white rounded-custom p-16 text-center border border-chocolate/5 shadow-sm">
                     <span className="material-symbols-outlined text-6xl text-chocolate/20 mb-4 block">inventory_2</span>
@@ -169,7 +185,7 @@ export default function FlavorsTab() {
                                         const isDragOver = dragOverItem.categoryName === catName && dragOverItem.index === index;
                                         
                                         return (
-                                            <tr 
+                                             <tr 
                                                 key={flavor.id} 
                                                 draggable 
                                                 onDragStart={() => handleDragStart(catName, index)}
@@ -183,6 +199,9 @@ export default function FlavorsTab() {
                                             >
                                                 <td className="p-5">
                                                     <div className="flex items-center gap-4">
+                                                        <span className="material-symbols-outlined text-chocolate/20 group-hover:text-chocolate/40 transition-colors">
+                                                            drag_indicator
+                                                        </span>
                                                         <div className="w-12 h-12 rounded-full overflow-hidden shrink-0 border border-chocolate/10 bg-cream/50 relative flex items-center justify-center">
                                                             <ImageWithFallback 
                                                                 src={flavor.img} 

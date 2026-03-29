@@ -6,21 +6,22 @@ import PageHeader from '../components/layout/PageHeader';
 
 export default function FlavorsPage() {
     useDocumentTitle('Nuestros Helados · Ricardo Gelats');
-    const { data: flavors, loading: flavorsLoading } = useFirebaseCollection('flavors');
-    const { data: rawCategories, loading: catLoading } = useFirebaseCollection('categories', 'order', 'asc');
+    const { data: flavors, loading: flavorsLoading } = useFirebaseCollection('flavors', null, null, [
+        { field: 'isAvailable', operator: '==', value: true }
+    ]);
+    const { data: rawCategories, loading: catLoading } = useFirebaseCollection('categories', null);
 
     const loading = flavorsLoading || catLoading;
     
     const categories = useMemo(() => {
-        // Build category config map for ordering
+        // Now items arrive already filtered and sorted by 'order' from Firebase (base level)
+        // Group flavors by category
         const catConfigMap = rawCategories.reduce((acc, c) => {
             acc[(c.name || '').trim().toLowerCase()] = c;
             return acc;
         }, {});
 
-        const activeFlavors = flavors.filter(f => f.isAvailable);
-
-        const grouped = activeFlavors.reduce((acc, flavor) => {
+        const grouped = flavors.reduce((acc, flavor) => {
             const cat = flavor.category || 'Sin categoría';
             // Normalize category name for matching with config
             const normalizedCat = cat.trim().toLowerCase();
@@ -64,7 +65,7 @@ export default function FlavorsPage() {
                 description="En nuestra carta encontrarás una cuidada selección de helados artesanales, elaborados con ingredientes de calidad y una amplia variedad de sabores para disfrutar en cualquier momento del día."
             />
 
-            <div className="section-container py-16 space-y-24">
+            <div className="section-container py-16 space-y-24 min-h-[40vh]">
                 {loading ? (
                     <div className="flex justify-center py-20">
                         <div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div>

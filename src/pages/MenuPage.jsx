@@ -17,14 +17,15 @@ export default function MenuPage() {
             document.head.removeChild(meta);
         };
     }, []);
-    const { data: menuItems, loading: itemsLoading } = useFirebaseCollection('menu_items');
+    const { data: menuItems, loading: itemsLoading } = useFirebaseCollection('menu_items', null, null, [
+        { field: 'isAvailable', operator: '==', value: true }
+    ]);
     const { data: rawCategories, loading: catsLoading } = useFirebaseCollection('menu_categories', null);
 
     const categories = useMemo(() => {
-        const activeItems = menuItems.filter(item => item.isAvailable);
-        
+        // Now items arrive already filtered and sorted by 'order' from Firebase (base level)
         // Group all items dynamically
-        const grouped = activeItems.reduce((acc, item) => {
+        const grouped = menuItems.reduce((acc, item) => {
             const catName = item.category || 'Otros';
             // Use case-insensitive grouping to avoid duplicates
             const safeName = Object.keys(acc).find(k => k.toLowerCase() === catName.toLowerCase()) || catName;
@@ -79,7 +80,7 @@ export default function MenuPage() {
                 description="Descubre nuestra exquisita selección de postres, gofres, crepes, cafés de especialidad y bebidas refrescantes. El complemento perfecto para cualquier momento del día."
             />
 
-            <div className="section-container py-16 space-y-24">
+            <div className="section-container py-16 space-y-24 min-h-[40vh]">
                 {itemsLoading || catsLoading ? (
                     <div className="flex justify-center py-20">
                         <div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div>

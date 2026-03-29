@@ -9,7 +9,14 @@ export default function FlavorCategory({ category }) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {category.items.map((item, idx) => (
-                    <FlavorCard key={idx} title={item.title} desc={item.desc} img={item.img} tags={item.tags} />
+                    <FlavorCard 
+                        key={idx} 
+                        title={item.title} 
+                        desc={item.desc} 
+                        img={item.img} 
+                        tags={item.tags} 
+                        priority={idx < 4} // First row gets priority
+                    />
                 ))}
             </div>
         </section>

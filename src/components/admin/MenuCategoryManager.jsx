@@ -2,7 +2,14 @@ import { useState } from 'react';
 import { useFirebaseCollection } from '../../hooks/useFirebaseCollection';
 
 export default function MenuCategoryManager() {
-    const { data: rawCategories, loading, addItem: addCategory, updateItem: updateCategory, deleteItem: deleteCategory } = useFirebaseCollection('menu_categories', null);
+    const { 
+        data: rawCategories, 
+        loading, 
+        addItem: addCategory, 
+        updateItem: updateCategory, 
+        deleteItem: deleteCategory,
+        updateMultipleItems
+    } = useFirebaseCollection('menu_categories', null);
     
     // Sort locally to avoid Firebase dropping documents that lack the 'order' field
     const categories = [...rawCategories].sort((a, b) => {
@@ -52,14 +59,19 @@ export default function MenuCategoryManager() {
             newCategories.splice(draggedIndex, 1);
             newCategories.splice(dragOverIndex, 0, draggedItem);
 
+            // Prepare batch updates
+            const updates = newCategories.map((cat, i) => ({
+                id: cat.id,
+                data: { order: i }
+            }));
+
             try {
-                const results = await Promise.all(
-                    newCategories.map((cat, i) => updateCategory(cat.id, { order: i }))
-                );
-                const failed = results.some(r => !r.success);
-                if (failed) alert("Error al guardar el nuevo orden. Recarga e inténtalo de nuevo.");
+                const result = await updateMultipleItems(updates);
+                if (!result.success) {
+                    alert("Error al guardar el nuevo orden. Recarga e inténtalo de nuevo.");
+                }
             } catch {
-                alert("Error inesperado al reordenar. Revisa tu conexión.");
+                alert("Error de conexión al reordenar.");
             }
         }
         setDraggedIndex(null);

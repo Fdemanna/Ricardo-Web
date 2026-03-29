@@ -1,19 +1,32 @@
 import { useState, useEffect, useCallback } from 'react';
-import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, query, orderBy } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, query, orderBy, where, writeBatch } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 
-export function useFirebaseCollection(collectionName, orderField = 'createdAt', orderDirection = 'desc') {
+export function useFirebaseCollection(collectionName, orderField = 'createdAt', orderDirection = 'desc', filters = []) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const getData = useCallback(() => {
-        let q;
-        if (orderField) {
-            q = query(collection(db, collectionName), orderBy(orderField, orderDirection));
-        } else {
-            q = query(collection(db, collectionName));
+        const collectionRef = collection(db, collectionName);
+        let constraints = [];
+
+        // Add server-side filters if provided
+        if (filters && Array.isArray(filters) && filters.length > 0) {
+            filters.forEach(f => {
+                if (f.field && f.operator && f.value !== undefined) {
+                    constraints.push(where(f.field, f.operator, f.value));
+                }
+            });
         }
+
+        // Add ordering
+        if (orderField) {
+            constraints.push(orderBy(orderField, orderDirection));
+        }
+
+        const q = query(collectionRef, ...constraints);
+
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const itemsData = snapshot.docs.map(doc => ({
                 id: doc.id,
@@ -28,7 +41,7 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
         });
 
         return unsubscribe;
-    }, [collectionName, orderField, orderDirection]);
+    }, [collectionName, orderField, orderDirection, JSON.stringify(filters)]);
 
     useEffect(() => {
         const unsubscribe = getData();
@@ -37,7 +50,6 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
 
     const addItem = async (itemData) => {
         try {
-            // Support backward compatibility where flavors/menus injected isAvailable automatically
             const payload = typeof itemData === 'string' ? { name: itemData } : itemData;
             const isMenuOrFlavor = collectionName === 'flavors' || collectionName === 'menu_items';
             
@@ -66,6 +78,25 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
         }
     };
 
+    /**
+     * Updates multiple items in a single atomic batch.
+     * @param {Array<{id: string, data: object}>} updates - Array of objects with id and data to update.
+     */
+    const updateMultipleItems = async (updates) => {
+        try {
+            const batch = writeBatch(db);
+            updates.forEach(({ id, data }) => {
+                const itemRef = doc(db, collectionName, id);
+                batch.update(itemRef, data);
+            });
+            await batch.commit();
+            return { success: true };
+        } catch (error) {
+            console.error(`Error batch updating in ${collectionName}:`, error);
+            return { success: false, error };
+        }
+    };
+
     const deleteItem = async (id) => {
         try {
             const itemRef = doc(db, collectionName, id);
@@ -77,5 +108,5 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
         }
     };
 
-    return { data, loading, error, addItem, updateItem, deleteItem };
+    return { data, loading, error, addItem, updateItem, updateMultipleItems, deleteItem };
 }

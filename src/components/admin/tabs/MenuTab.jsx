@@ -5,7 +5,15 @@ import MenuItemForm from '../MenuItemForm';
 import MenuCategoryManager from '../MenuCategoryManager';
 
 export default function MenuTab() {
-    const { data: menuItems, loading: menuLoading, addItem: addMenuItem, updateItem: updateMenuItem, deleteItem: deleteMenuItem } = useFirebaseCollection('menu_items');
+    const { 
+        data: menuItems, 
+        loading: menuLoading, 
+        addItem: addMenuItem, 
+        updateItem: updateMenuItem, 
+        deleteItem: deleteMenuItem,
+        updateMultipleItems,
+        error
+    } = useFirebaseCollection('menu_items');
     const { data: rawCategories } = useFirebaseCollection('menu_categories', null);
     const [showMenuForm, setShowMenuForm] = useState(false);
     const [editingMenuItem, setEditingMenuItem] = useState(null);
@@ -68,16 +76,18 @@ export default function MenuTab() {
 
         if (categoryName && draggedIndex !== null && dragOverIndex !== null && draggedIndex !== dragOverIndex) {
             const itemsInCat = [...groupedMenuItems[categoryName]];
-            const dragged = itemsInCat[draggedIndex];
-            
-            itemsInCat.splice(draggedIndex, 1);
+            const [dragged] = itemsInCat.splice(draggedIndex, 1);
             itemsInCat.splice(dragOverIndex, 0, dragged);
 
+            // Prepare batch updates
+            const updates = itemsInCat.map((item, i) => ({
+                id: item.id,
+                data: { order: i }
+            }));
+
             try {
-                const results = await Promise.all(
-                    itemsInCat.map((item, i) => updateMenuItem(item.id, { order: i }))
-                );
-                if (results.some(r => !r.success)) {
+                const result = await updateMultipleItems(updates);
+                if (!result.success) {
                     alert("Error al guardar el nuevo orden de los productos. Recarga la página.");
                 }
             } catch (error) {
@@ -128,6 +138,13 @@ export default function MenuTab() {
 
             {menuLoading ? (
                 <div className="flex justify-center p-20"><div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div></div>
+            ) : error ? (
+                <div className="bg-red-50 p-10 rounded-custom text-center border border-red-100 mb-8">
+                    <span className="material-symbols-outlined text-4xl text-red-400 mb-3 block">error_outline</span>
+                    <h3 className="text-lg font-bold text-red-800 mb-1">Error al cargar datos</h3>
+                    <p className="text-red-600/80 text-sm max-w-md mx-auto mb-4">No se pudo conectar con la base de datos de productos. Esto suele ser por un índice pendiente de crear.</p>
+                    <button onClick={() => window.location.reload()} className="text-red-800 font-bold underline text-sm hover:text-red-900 transition-colors">Reintentar</button>
+                </div>
             ) : menuItems.length === 0 ? (
                 <div className="bg-white rounded-custom p-16 text-center border border-chocolate/5 shadow-sm">
                     <span className="material-symbols-outlined text-6xl text-chocolate/20 mb-4 block">receipt_long</span>
