@@ -11,7 +11,7 @@ export default function PhilosophySection() {
                             <div className="relative aspect-[3/4] rounded-custom overflow-hidden shadow-xl">
                                 <ImageWithFallback 
                                     loading="lazy" 
-                                    className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700" 
+                                    className="object-cover w-full h-full grayscale hover:grayscale-0 transition duration-700" 
                                     src="/historia-letrero.jpg"
                                     alt="Artesanía Ricardo Gelats" 
                                     fallbackIcon="icecream" 
@@ -20,7 +20,7 @@ export default function PhilosophySection() {
                             <div className="flex flex-col gap-2 border-t border-chocolate/20 pt-4">
                                 <span className="text-xs font-bold uppercase tracking-widest text-chocolate-light">El Obrador</span>
                                 <h3 className="text-2xl font-serif text-chocolate">La experiencia Ricardo Gelats</h3>
-                                <p className="text-sm text-chocolate-light leading-relaxed">
+                                <p className="text-sm text-chocolate-light leading-relaxed text-justify">
                                     Cuidamos el sabor, la textura y la presentación en cada detalle de nuestros helados y horchata.
                                 </p>
                             </div>

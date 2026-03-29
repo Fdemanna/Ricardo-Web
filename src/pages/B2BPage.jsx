@@ -17,19 +17,19 @@ export default function B2BPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="bg-white p-8 rounded-custom shadow-sm border border-chocolate/5 hover:shadow-md transition-shadow">
                         <h3 className="heading-sm mb-4 text-balance">Restaurantes y bares</h3>
-                        <p className="text-chocolate/70">
+                        <p className="text-chocolate/70 text-justify">
                             Incorpora nuestros helados a tu carta como postre o complemento. Formato cómodo, entrega regular y variedad de sabores según temporada.
                         </p>
                     </div>
                     <div className="bg-white p-8 rounded-custom shadow-sm border border-chocolate/5 hover:shadow-md transition-shadow">
                         <h3 className="heading-sm mb-4 text-balance">Hoteles</h3>
-                        <p className="text-chocolate/70">
+                        <p className="text-chocolate/70 text-justify">
                             Desde el desayuno buffet hasta el servicio de habitaciones. Adaptamos el formato y el volumen a tus necesidades.
                         </p>
                     </div>
                     <div className="bg-white p-8 rounded-custom shadow-sm border border-chocolate/5 hover:shadow-md transition-shadow">
                         <h3 className="heading-sm mb-4 text-balance">Eventos y catering</h3>
-                        <p className="text-chocolate/70">
+                        <p className="text-chocolate/70 text-justify">
                             Bodas, comuniones, eventos corporativos. Helado artesanal como protagonista o como detalle final que marca la diferencia.
                         </p>
                     </div>

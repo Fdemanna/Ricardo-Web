@@ -41,7 +41,7 @@ export default function FlavorsPage() {
                         <div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div>
                     </div>
                 ) : categories.length === 0 ? (
-                    <div className="text-center py-20 text-chocolate/50 font-medium">Próximamente más sabores...</div>
+                    <div className="text-center py-20 text-chocolate/50 font-medium">Próximamente más sabores…</div>
                 ) : (
                     categories.map((cat) => (
                         <FlavorCategory key={cat.id} category={cat} />

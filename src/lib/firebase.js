@@ -34,5 +34,5 @@ if (typeof window !== 'undefined') {
     }
 }
 
-export { app, analytics, db, auth };
+export { db, auth };
 

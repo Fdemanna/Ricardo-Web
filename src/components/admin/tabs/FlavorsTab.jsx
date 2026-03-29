@@ -40,7 +40,7 @@ export default function FlavorsTab() {
                     <h2 className="text-3xl font-bold text-chocolate font-serif mb-1">Gestión de Sabores</h2>
                     <p className="text-chocolate/60">Actualiza el inventario de helados en tiempo real.</p>
                 </div>
-                <button onClick={() => { setEditingFlavor(null); setShowFlavorForm(true); }} className="btn-primary py-3 px-6 rounded-custom font-bold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all">
+                <button onClick={() => { setEditingFlavor(null); setShowFlavorForm(true); }} className="btn-primary py-3 px-6 rounded-custom font-bold flex items-center gap-2 shadow-lg hover:shadow-xl transition">
                     <span className="material-symbols-outlined text-sm">add</span>
                     Añadir Nuevo Sabor
                 </button>

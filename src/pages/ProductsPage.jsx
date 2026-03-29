@@ -175,7 +175,7 @@ export default function ProductsPage() {
                         <div className="absolute bottom-0 left-0 p-10 flex flex-col gap-3">
                             <span className="bg-[#F4AF25] w-fit text-chocolate text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1.5 rounded-full shadow-lg mb-2 transform origin-left transition-transform duration-500 group-hover:scale-105">Refrescante</span>
                             <h3 className="text-cream text-4xl font-bold font-serif italic mb-1">Batidos</h3>
-                            <p className="text-cream/80 text-lg font-light leading-relaxed">
+                            <p className="text-cream/80 text-lg font-light leading-relaxed text-justify">
                                 Cremosos e intensos, elaborados al momento con tu helado favorito y leche fresca.
                             </p>
                         </div>
@@ -193,11 +193,11 @@ export default function ProductsPage() {
                             className="absolute inset-0 bg-chocolate/20 transition-colors duration-500 group-hover:bg-chocolate/40"
                         ></div>
                         <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-8 pb-10">
-                            <div className="glass-card w-full px-6 py-10 rounded-custom flex flex-col items-center gap-4 border-white/10 hover:border-white/20 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 relative">
+                            <div className="glass-card w-full px-6 py-10 rounded-custom flex flex-col items-center gap-4 border-white/10 hover:border-white/20 transition duration-700 transform translate-y-4 group-hover:translate-y-0 relative">
                                 <span className="absolute -top-3 bg-[#F4AF25] text-chocolate text-[10px] font-bold uppercase tracking-[0.3em] px-4 py-1 rounded-full shadow-lg">Premium</span>
                                 <h3 className="text-cream text-4xl font-bold font-serif italic mt-2">Bubble Tea</h3>
                                 <div className="h-px w-12 bg-cream/20" />
-                                <p className="text-cream/90 text-sm md:text-base font-light leading-relaxed">
+                                <p className="text-cream/90 text-sm md:text-base font-light leading-relaxed text-justify">
                                     Un toque moderno en nuestra tradición. Perlas de sabor explosivo en una base de té infusionado.
                                 </p>
                             </div>
@@ -220,7 +220,7 @@ export default function ProductsPage() {
                             <h2 className="text-4xl md:text-6xl font-black font-serif text-chocolate [text-wrap:balance]">
                                 ¿Vienes a <span className="italic font-light">visitarnos</span>?
                             </h2>
-                            <p className="text-chocolate/60 text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed italic px-4">
+                            <p className="text-chocolate/60 text-lg md:text-2xl font-light max-w-2xl mx-auto leading-relaxed italic px-4 text-justify">
                                 "La verdadera artesanalidad no se explica, se disfruta en cada detalle."
                             </p>
                         </div>
@@ -228,7 +228,7 @@ export default function ProductsPage() {
                         <div className="flex flex-col sm:flex-row gap-4 relative z-10 w-full justify-center">
                             <button 
                                 onClick={() => window.open('https://maps.google.com/?q=Ricardo+Gelats+Castellon', '_blank')}
-                                className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-full h-16 px-12 bg-chocolate text-cream text-xl font-bold transition-all hover:bg-chocolate-light hover:-translate-y-1 hover:shadow-2xl hover:shadow-chocolate/20 active:scale-95"
+                                className="flex min-w-[280px] cursor-pointer items-center justify-center rounded-full h-16 px-12 bg-chocolate text-cream text-xl font-bold transition hover:bg-chocolate-light hover:-translate-y-1 hover:shadow-2xl hover:shadow-chocolate/20 active:scale-95"
                             >
                                 <span className="truncate tracking-wide">Visítanos en Castellón</span>
                             </button>
@@ -236,7 +236,7 @@ export default function ProductsPage() {
                                 href="https://www.instagram.com/ricardogelats/" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                className="flex min-w-[280px] items-center justify-center rounded-full h-16 px-12 bg-chocolate text-cream text-xl font-bold transition-all hover:bg-chocolate-light hover:-translate-y-1 hover:shadow-2xl hover:shadow-chocolate/20 active:scale-95 shadow-md"
+                                className="flex min-w-[280px] items-center justify-center rounded-full h-16 px-12 bg-chocolate text-cream text-xl font-bold transition hover:bg-chocolate-light hover:-translate-y-1 hover:shadow-2xl hover:shadow-chocolate/20 active:scale-95 shadow-md"
                             >
                                 <span className="truncate tracking-wide">Síguenos @ricardogelats</span>
                             </a>

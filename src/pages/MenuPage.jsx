@@ -17,26 +17,51 @@ export default function MenuPage() {
             document.head.removeChild(meta);
         };
     }, []);
-    const { data: menuItems, loading } = useFirebaseCollection('menu_items');
+    const { data: menuItems, loading: itemsLoading } = useFirebaseCollection('menu_items');
+    const { data: rawCategories, loading: catsLoading } = useFirebaseCollection('menu_categories', null);
 
     const categories = useMemo(() => {
         const activeItems = menuItems.filter(item => item.isAvailable);
         
+        // Group all items dynamically
         const grouped = activeItems.reduce((acc, item) => {
-            const cat = item.category || 'Otros';
-            if (!acc[cat]) {
-                acc[cat] = {
-                    id: cat,
-                    name: cat,
-                    items: []
-                };
+            const catName = item.category || 'Otros';
+            // Use case-insensitive grouping to avoid duplicates
+            const safeName = Object.keys(acc).find(k => k.toLowerCase() === catName.toLowerCase()) || catName;
+            
+            if (!acc[safeName]) {
+                acc[safeName] = { id: safeName, name: safeName, items: [] };
             }
-            acc[cat].items.push(item);
+            acc[safeName].items.push(item);
             return acc;
         }, {});
 
-        return Object.values(grouped).sort((a,b) => a.name.localeCompare(b.name));
-    }, [menuItems]);
+        // Build a config map from database categories
+        const catConfigMap = {};
+        rawCategories.forEach(c => {
+            catConfigMap[(c.name || '').trim().toLowerCase()] = c;
+        });
+
+        // Filter out explicitly hidden categories and sort by assigned order
+        const finalCategories = Object.values(grouped).filter(cat => {
+            const config = catConfigMap[cat.name.trim().toLowerCase()];
+            if (config && config.isVisible === false) return false;
+            return true;
+        }).sort((a, b) => {
+            const configA = catConfigMap[a.name.trim().toLowerCase()];
+            const configB = catConfigMap[b.name.trim().toLowerCase()];
+            
+            const orderA = configA?.order !== undefined ? configA.order : 999;
+            const orderB = configB?.order !== undefined ? configB.order : 999;
+
+            if (orderA === orderB) {
+                return a.name.localeCompare(b.name);
+            }
+            return orderA - orderB;
+        });
+
+        return finalCategories;
+    }, [menuItems, rawCategories]);
 
     return (
         <div className="bg-cream min-h-screen">
@@ -47,7 +72,7 @@ export default function MenuPage() {
             />
 
             <div className="section-container py-16 space-y-24">
-                {loading ? (
+                {itemsLoading || catsLoading ? (
                     <div className="flex justify-center py-20">
                         <div className="w-12 h-12 border-4 border-chocolate/20 border-t-chocolate rounded-full animate-spin"></div>
                     </div>

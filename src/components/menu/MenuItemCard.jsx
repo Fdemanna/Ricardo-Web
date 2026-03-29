@@ -31,7 +31,7 @@ export default function MenuItemCard({ title, desc, price, tags = [], imageUrl }
                     <div className="flex-grow border-b border-dotted border-chocolate/10 mx-2"></div>
                     <span className="text-base md:text-lg font-bold text-chocolate whitespace-nowrap tabular-nums">{formattedPrice} €</span>
                 </div>
-                {desc && <p className="text-chocolate/60 text-sm font-light mt-1.5 pr-8 leading-relaxed italic">{desc}</p>}
+                {desc && <p className="text-chocolate/60 text-sm font-light mt-1.5 pr-8 leading-relaxed italic text-justify">{desc}</p>}
                 {tags?.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
                         {tags.map(tag => (

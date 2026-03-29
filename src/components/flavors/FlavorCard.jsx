@@ -11,7 +11,7 @@ export default function FlavorCard({ title, desc, img, tags = [] }) {
             </div>
             <div className="p-6 bg-white flex-1 flex flex-col">
                 <h3 className="text-xl font-serif font-bold text-chocolate mb-3">{title}</h3>
-                <p className="text-chocolate/70 text-sm leading-relaxed font-light flex-1">{desc}</p>
+                <p className="text-chocolate/70 text-sm leading-relaxed font-light flex-1 text-justify">{desc}</p>
                 {tags?.length > 0 && (
                     <div className="mt-4 flex flex-wrap gap-2">
                         {tags.map(tag => (

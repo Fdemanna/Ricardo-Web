@@ -42,7 +42,7 @@ export default function FlavorCategoryManager() {
                     type="text" 
                     value={newCat} 
                     onChange={e => setNewCat(e.target.value)} 
-                    placeholder="Nueva categoría (ej: opciones veganas, sin azúcar...)" 
+                    placeholder="Nueva categoría (ej: opciones veganas, sin azúcar…)" 
                     className="flex-1 rounded-md border-chocolate/20 text-sm py-2 px-3"
                 />
                 <button type="submit" className="btn-primary px-6 py-2 rounded-md font-bold text-sm shadow-sm hover:shadow-md transition-shadow">Añadir</button>
@@ -56,7 +56,6 @@ export default function FlavorCategoryManager() {
                         <div key={cat.id} className="bg-[#FFFBF2] p-3 rounded-md border border-chocolate/10 flex justify-between items-center group shadow-sm hover:border-chocolate/30 transition-colors">
                             {editingId === cat.id ? (
                                 <input 
-                                    autoFocus
                                     type="text" 
                                     value={editValue} 
                                     onChange={e => setEditValue(e.target.value)}

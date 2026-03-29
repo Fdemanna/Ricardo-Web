@@ -16,13 +16,13 @@
 
 @layer components {
     .btn-primary {
-        @apply bg-chocolate text-cream rounded-custom transition-all duration-200 active:scale-95;
+        @apply bg-chocolate text-cream rounded-custom transition duration-200 active:scale-95;
     }
     .btn-primary:hover {
         @apply bg-chocolate-light;
     }
     .btn-secondary {
-        @apply bg-transparent text-chocolate border-2 border-chocolate rounded-custom transition-all duration-200 active:scale-95 hover:bg-chocolate/5;
+        @apply bg-transparent text-chocolate border-2 border-chocolate rounded-custom transition duration-200 active:scale-95 hover:bg-chocolate/5;
     }
     .drop-cap {
         @apply float-left font-serif text-chocolate;

@@ -22,12 +22,12 @@ export default function ArtisanalQuality() {
                         <h2 className="heading-lg mb-6">Cremosos y llenos de sabor</h2>
                     </ScrollReveal>
                     <ScrollReveal delay={100} yOffset={10}>
-                        <p className="text-lg text-chocolate/80 mb-8 leading-relaxed font-light">
+                        <p className="text-lg text-chocolate/80 mb-8 leading-relaxed font-light text-justify">
                             Desde nuestro obrador elaboramos helados cremosos y llenos de sabor, con recetas propias y una gran variedad de sabores clásicos y especiales. A cualquier hora del día, ya sea para un helado paseando por la Avenida Rei en Jaume o para una merienda tranquila en la terraza, te esperamos con un trato cercano y un ambiente familiar.
                         </p>
                     </ScrollReveal>
                     <ScrollReveal delay={200} yOffset={5}>
-                        <a href="https://www.instagram.com/ricardogelats/" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block px-8 py-3 rounded-custom font-bold shadow-lg transition-all active:scale-95 hover:scale-105">Síguenos en Instagram @ricardogelats</a>
+                        <a href="https://www.instagram.com/ricardogelats/" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block px-8 py-3 rounded-custom font-bold shadow-lg transition active:scale-95 hover:scale-105">Síguenos en Instagram @ricardogelats</a>
                     </ScrollReveal>
                 </div>
             </div>

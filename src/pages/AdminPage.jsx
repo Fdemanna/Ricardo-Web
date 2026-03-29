@@ -64,13 +64,13 @@ export default function AdminPage() {
                 <div className="hidden md:flex bg-cream/10 rounded-full p-1 border border-cream/20">
                     <button
                         onClick={() => setActiveTab('flavors')}
-                        className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${activeTab === 'flavors' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
+                        className={`px-6 py-2 rounded-full font-bold text-sm transition ${activeTab === 'flavors' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
                     >
                         🍦 Helados
                     </button>
                     <button
                         onClick={() => setActiveTab('menu')}
-                        className={`px-6 py-2 rounded-full font-bold text-sm transition-all ${activeTab === 'menu' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
+                        className={`px-6 py-2 rounded-full font-bold text-sm transition ${activeTab === 'menu' ? 'bg-cream text-chocolate shadow-md' : 'text-cream hover:bg-cream/10'}`}
                     >
                         ☕ Carta (Menú)
                     </button>
@@ -94,13 +94,13 @@ export default function AdminPage() {
             <div className="md:hidden flex bg-chocolate/5 p-2">
                 <button
                     onClick={() => setActiveTab('flavors')}
-                    className={`flex-1 py-3 text-center font-bold text-sm transition-all ${activeTab === 'flavors' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
+                    className={`flex-1 py-3 text-center font-bold text-sm transition ${activeTab === 'flavors' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
                 >
                     🍦 Helados
                 </button>
                 <button
                     onClick={() => setActiveTab('menu')}
-                    className={`flex-1 py-3 text-center font-bold text-sm transition-all ${activeTab === 'menu' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
+                    className={`flex-1 py-3 text-center font-bold text-sm transition ${activeTab === 'menu' ? 'bg-white text-chocolate rounded-md shadow-sm border border-chocolate/10' : 'text-chocolate/60'}`}
                 >
                     ☕ Carta
                 </button>

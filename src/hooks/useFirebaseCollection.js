@@ -7,7 +7,12 @@ export function useFirebaseCollection(collectionName, orderField = 'createdAt', 
     const [loading, setLoading] = useState(true);
 
     const getData = useCallback(() => {
-        const q = query(collection(db, collectionName), orderBy(orderField, orderDirection));
+        let q;
+        if (orderField) {
+            q = query(collection(db, collectionName), orderBy(orderField, orderDirection));
+        } else {
+            q = query(collection(db, collectionName));
+        }
         const unsubscribe = onSnapshot(q, (snapshot) => {
             const itemsData = snapshot.docs.map(doc => ({
                 id: doc.id,

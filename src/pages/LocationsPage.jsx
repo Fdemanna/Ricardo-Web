@@ -27,7 +27,7 @@ export default function LocationsPage() {
                 <div className="max-w-3xl mx-auto px-6 text-center">
                     <span className="material-symbols-outlined text-5xl text-glacier-dark mb-6 block">call</span>
                     <h2 className="heading-md mb-4">¿Necesitas algo?</h2>
-                    <p className="text-chocolate/70 text-lg mb-10 max-w-lg mx-auto">
+                    <p className="text-chocolate/70 text-lg mb-10 max-w-lg mx-auto text-justify">
                         Para pedidos grandes, consultas sobre alergias o cualquier otra cosa, llámanos directamente y estaremos encantados de atenderte.
                     </p>
                     <a 

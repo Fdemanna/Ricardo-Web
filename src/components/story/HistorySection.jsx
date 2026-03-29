@@ -12,7 +12,7 @@ export default function HistorySection() {
                         </h1>
                     </ScrollReveal>
                     <ScrollReveal delay={100} yOffset={20}>
-                        <div className="flex flex-col gap-6 text-chocolate-light text-lg font-light leading-relaxed border-l-2 border-chocolate/20 pl-6 mt-4">
+                        <div className="flex flex-col gap-6 text-chocolate-light text-lg font-light leading-relaxed border-l-2 border-chocolate/20 pl-6 mt-4 text-justify">
                             <p>
                                 En Ricardo Gelats llevamos más de 70 años endulzando Castellón con helados artesanales, horchata y meriendas en familia. Nuestra historia comienza en 1950, cuando se abre la horchatería original.
                             </p>
@@ -39,7 +39,7 @@ export default function HistorySection() {
             </div>
             
             <ScrollReveal delay={300} yOffset={20}>
-                <div className="mt-16 text-chocolate/80 leading-loose font-light text-lg max-w-4xl">
+                <div className="mt-16 text-chocolate/80 leading-loose font-light text-lg max-w-4xl text-justify">
                     <p>
                         A principios de los 2000, una nueva generación tomó el relevo del negocio en la céntrica Avenida Rei en Jaume, manteniendo la elaboración artesanal de horchata, helados y granizados y abriendo una etapa de crecimiento y modernización. Mantenemos el compromiso de ser un punto de encuentro para quienes vienen de siempre y quienes nos descubren ahora.
                     </p>

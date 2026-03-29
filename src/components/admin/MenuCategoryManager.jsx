@@ -2,24 +2,66 @@ import { useState } from 'react';
 import { useFirebaseCollection } from '../../hooks/useFirebaseCollection';
 
 export default function MenuCategoryManager() {
-    const { data: categories, loading, addItem: addCategory, updateItem: updateCategory, deleteItem: deleteCategory } = useFirebaseCollection('menu_categories', 'name', 'asc');
+    const { data: rawCategories, loading, addItem: addCategory, updateItem: updateCategory, deleteItem: deleteCategory } = useFirebaseCollection('menu_categories', null);
+    
+    // Sort locally to avoid Firebase dropping documents that lack the 'order' field
+    const categories = [...rawCategories].sort((a, b) => {
+        const orderA = a.order !== undefined ? a.order : 999;
+        const orderB = b.order !== undefined ? b.order : 999;
+        if (orderA === orderB) return (a.name || '').localeCompare(b.name || '');
+        return orderA - orderB;
+    });
     const [newCat, setNewCat] = useState('');
     const [editingId, setEditingId] = useState(null);
     const [editValue, setEditValue] = useState('');
+    const [draggedIndex, setDraggedIndex] = useState(null);
+    const [dragOverIndex, setDragOverIndex] = useState(null);
 
     const handleAdd = async (e) => {
         e.preventDefault();
         if (!newCat.trim()) return;
-        const res = await addCategory(newCat.trim());
+        const res = await addCategory({
+            name: newCat.trim(),
+            isVisible: true,
+            order: categories.length
+        });
         if (res.success) setNewCat('');
         else alert("Error al guardar categoría en el menú. Revisa reglas de Firebase.");
     };
 
     const handleEditSave = async (id) => {
         if (!editValue.trim()) return;
-        const res = await updateCategory(id, editValue.trim());
+        const res = await updateCategory(id, { name: editValue.trim() });
         if (res.success) setEditingId(null);
         else alert("Error al actualizar categoría del menú.");
+    };
+
+    const handleDragStart = (index) => {
+        setDraggedIndex(index);
+    };
+
+    const handleDragEnter = (index) => {
+        setDragOverIndex(index);
+    };
+
+    const handleDragEnd = async () => {
+        if (draggedIndex !== null && dragOverIndex !== null && draggedIndex !== dragOverIndex) {
+            const newCategories = [...categories];
+            const draggedItem = newCategories[draggedIndex];
+            
+            newCategories.splice(draggedIndex, 1);
+            newCategories.splice(dragOverIndex, 0, draggedItem);
+
+            await Promise.all(
+                newCategories.map((cat, i) => updateCategory(cat.id, { order: i }))
+            );
+        }
+        setDraggedIndex(null);
+        setDragOverIndex(null);
+    };
+
+    const handleToggleVisibility = async (cat) => {
+        await updateCategory(cat.id, { isVisible: cat.isVisible !== false ? false : true });
     };
 
     const handleDelete = async (id) => {
@@ -42,21 +84,33 @@ export default function MenuCategoryManager() {
                     type="text" 
                     value={newCat} 
                     onChange={e => setNewCat(e.target.value)} 
-                    placeholder="Nueva categoría (ej: Cafés especiales...)" 
+                    placeholder="Nueva categoría (ej: Cafés especiales…)" 
                     className="flex-1 rounded-md border-chocolate/20 text-sm py-2 px-3 focus:ring-chocolate focus:border-chocolate"
                 />
                 <button type="submit" className="btn-primary px-6 py-2 rounded-md font-bold text-sm shadow-sm hover:shadow-md transition-shadow">Añadir</button>
             </form>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-2">
                 {categories.length === 0 ? (
-                    <p className="text-sm text-chocolate/50 italic col-span-full bg-cream/50 p-4 rounded-md text-center">Todavía no hay categorías establecidas para el menú.</p>
+                    <p className="text-sm text-chocolate/50 italic bg-cream/50 p-4 rounded-md text-center">Todavía no hay categorías establecidas para el menú.</p>
                 ) : (
-                    categories.map(cat => (
-                        <div key={cat.id} className="bg-[#FFFBF2] p-3 rounded-md border border-chocolate/10 flex justify-between items-center group shadow-sm hover:border-chocolate/30 transition-colors">
+                    categories.map((cat, index) => (
+                        <div 
+                            key={cat.id} 
+                            draggable={editingId !== cat.id}
+                            onDragStart={() => handleDragStart(index)}
+                            onDragEnter={() => handleDragEnter(index)}
+                            onDragEnd={handleDragEnd}
+                            onDragOver={(e) => e.preventDefault()}
+                            className={`p-3 rounded-md border flex justify-between items-center group shadow-sm transition-all cursor-move
+                                ${draggedIndex === index ? 'opacity-40 scale-[0.99] border-chocolate/50 bg-white' : ''}
+                                ${dragOverIndex === index && draggedIndex !== index ? 'border-chocolate border-dashed bg-chocolate/5' : ''}
+                                ${cat.isVisible === false && draggedIndex !== index ? 'bg-gray-50 border-gray-200 opacity-60' : 
+                                 (!draggedIndex && !dragOverIndex ? 'bg-[#FFFBF2] border-chocolate/10 hover:border-chocolate/30' : '')}
+                            `}
+                        >
                             {editingId === cat.id ? (
                                 <input 
-                                    autoFocus
                                     type="text" 
                                     value={editValue} 
                                     onChange={e => setEditValue(e.target.value)}
@@ -64,7 +118,12 @@ export default function MenuCategoryManager() {
                                     className="w-full text-sm border-chocolate/30 focus:ring-chocolate focus:border-chocolate rounded-md py-1 px-2 shadow-inner mr-2"
                                 />
                             ) : (
-                                <span className="font-bold text-chocolate/90 text-sm capitalize">{cat.name}</span>
+                                <div className="flex items-center gap-3">
+                                    <span className="material-symbols-outlined flex items-center justify-center text-chocolate/20 group-hover:text-chocolate/40 transition-colors">
+                                        drag_indicator
+                                    </span>
+                                    <span className={`font-bold text-sm capitalize ${cat.isVisible === false ? 'text-chocolate/60 line-through' : 'text-chocolate/90'}`}>{cat.name}</span>
+                                </div>
                             )}
                             
                             <div className="flex items-center gap-1 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
@@ -74,6 +133,9 @@ export default function MenuCategoryManager() {
                                     </button>
                                 ) : (
                                     <>
+                                        <button onClick={() => handleToggleVisibility(cat)} className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors tooltip ${cat.isVisible !== false ? 'text-chocolate hover:bg-chocolate/10' : 'text-chocolate/40 bg-chocolate/10 hover:bg-chocolate/20'}`} title={cat.isVisible !== false ? "Ocultar en la carta" : "Mostrar en la carta"}>
+                                            <span className="material-symbols-outlined text-sm">{cat.isVisible !== false ? 'visibility' : 'visibility_off'}</span>
+                                        </button>
                                         <button onClick={() => { setEditingId(cat.id); setEditValue(cat.name); }} className="w-7 h-7 flex items-center justify-center text-blue-600 hover:bg-blue-100 rounded-md transition-colors tooltip" title="Editar">
                                             <span className="material-symbols-outlined text-sm">edit</span>
                                         </button>

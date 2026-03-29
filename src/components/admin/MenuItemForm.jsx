@@ -109,7 +109,7 @@ export default function MenuItemForm({ initialData = null, onSubmit, onCancel })
                             onChange={handleChange}
                             rows="2"
                             className="w-full rounded-custom border-chocolate/20 bg-white py-3 px-4 focus:ring-chocolate focus:border-chocolate resize-none"
-                            placeholder="Ej. Con sirope de chocolate belga y nata (Opcional)..."
+                            placeholder="Ej. Con sirope de chocolate belga y nata (Opcional)…"
                         ></textarea>
                     </div>
 
@@ -147,7 +147,7 @@ export default function MenuItemForm({ initialData = null, onSubmit, onCancel })
                                 className="w-full rounded-custom border-chocolate/20 bg-white py-3 px-4 focus:ring-chocolate focus:border-chocolate capitalize"
                             >
                                 {catLoading ? (
-                                    <option value="">Cargando categorías...</option>
+                                    <option value="">Cargando categorías…</option>
                                 ) : categories.length === 0 ? (
                                     <option value="">No hay categorías en el menú</option>
                                 ) : (
@@ -155,7 +155,7 @@ export default function MenuItemForm({ initialData = null, onSubmit, onCancel })
                                         <option key={cat.id} value={cat.name} className="capitalize">{cat.name}</option>
                                     ))
                                 )}
-                                <option value="nueva" className="font-bold text-glacier bg-cream/50">+ Crear nueva categoría rápida...</option>
+                                <option value="nueva" className="font-bold text-glacier bg-cream/50">+ Crear nueva categoría rápida…</option>
                             </select>
                         ) : (
                             <div className="flex gap-3">
@@ -165,8 +165,7 @@ export default function MenuItemForm({ initialData = null, onSubmit, onCancel })
                                     onChange={handleChange}
                                     required
                                     className="w-full flex-1 rounded-custom border-chocolate/20 bg-white py-3 px-4 focus:ring-chocolate focus:border-chocolate"
-                                    placeholder="Escribe la categoría manual..."
-                                    autoFocus
+                                    placeholder="Escribe la categoría manual…"
                                 />
                                 <button type="button" onClick={() => { setForceCustomCategory(false); setFormData(prev => ({ ...prev, category: '' })) }} className="px-5 font-bold text-chocolate bg-gray-200 hover:bg-gray-300 rounded-custom transition-colors">Volver</button>
                             </div>

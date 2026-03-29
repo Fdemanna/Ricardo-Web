@@ -32,7 +32,7 @@ export default function LocationCard({ shop, name, address, schedules, img, mapL
                         ))}
                     </ul>
                 </div>
-                <a href={mapLink} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-glacier py-3.5 rounded-custom font-bold text-chocolate uppercase tracking-wide hover:opacity-90 transition-all duration-200 active:scale-95">
+                <a href={mapLink} target="_blank" rel="noopener noreferrer" className="block text-center w-full bg-glacier py-3.5 rounded-custom font-bold text-chocolate uppercase tracking-wide hover:opacity-90 transition duration-200 active:scale-95">
                     Cómo Llegar
                 </a>
             </div>
