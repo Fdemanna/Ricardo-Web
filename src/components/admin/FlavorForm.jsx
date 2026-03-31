@@ -1,41 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ImageWithFallback from '../ui/ImageWithFallback';
-import { useFirebaseCollection } from '../../hooks/useFirebaseCollection';
 import { AVAILABLE_TAGS } from '../../constants/allergens';
 
-export default function FlavorForm({ initialData = null, categories = [], onSubmit, onCancel }) {
-    const catLoading = false; 
-    // const { data: categories, loading: catLoading } = useFirebaseCollection('categories', 'name', 'asc');
-    
+export default function FlavorForm({ initialData = null, onSubmit, onCancel }) {
     const [formData, setFormData] = useState(() => ({
         title: initialData?.title || '',
         desc: initialData?.desc || '',
-        category: initialData?.category || '',
         img: initialData?.img || '',
-        tags: initialData?.tags || [],
-        order: initialData?.order !== undefined ? initialData.order : 999
+        tags: initialData?.tags || []
     }));
-
-    const [forceCustomCategory, setForceCustomCategory] = useState(false);
-
-    const isCustomCategory = forceCustomCategory || 
-        (!catLoading && formData.category && categories.length > 0 && !categories.some(c => c.name.toLowerCase() === formData.category.toLowerCase()));
-    
-    const effectiveCategory = formData.category || (!catLoading && categories.length > 0 ? categories[0].name.toLowerCase() : '');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        if (name === 'categorySelect') {
-            if (value === 'nueva') {
-                setForceCustomCategory(true);
-                setFormData(prev => ({ ...prev, category: '' }));
-            } else {
-                setForceCustomCategory(false);
-                setFormData(prev => ({ ...prev, category: value }));
-            }
-        } else {
-            setFormData(prev => ({ ...prev, [name]: value }));
-        }
+        setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleTagToggle = (tag) => {
@@ -51,16 +28,14 @@ export default function FlavorForm({ initialData = null, categories = [], onSubm
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({
-            ...formData,
-            category: effectiveCategory.trim()
-        });
+        onSubmit(formData);
     };
 
     return (
         <div className="fixed inset-0 bg-chocolate/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-cream p-8 rounded-custom w-full max-w-lg shadow-2xl relative">
+            <div className="bg-cream p-8 rounded-custom w-full max-w-lg shadow-2xl relative max-h-[90vh] overflow-y-auto">
                 <button 
+                    type="button"
                     onClick={onCancel} 
                     className="absolute top-4 right-4 text-chocolate/50 hover:text-chocolate transition-colors"
                 >
@@ -119,42 +94,6 @@ export default function FlavorForm({ initialData = null, categories = [], onSubm
                     </div>
 
                     <div className="flex flex-col gap-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-chocolate/80">Categoría</label>
-                        {!isCustomCategory ? (
-                            <select 
-                                name="categorySelect"
-                                value={effectiveCategory} 
-                                onChange={handleChange}
-                                disabled={catLoading}
-                                className="w-full rounded-custom border-chocolate/20 bg-white py-3 px-4 focus:ring-chocolate focus:border-chocolate capitalize"
-                            >
-                                {catLoading ? (
-                                    <option value="">Cargando categorías…</option>
-                                ) : categories.length === 0 ? (
-                                    <option value="">No hay categorías en el sistema</option>
-                                ) : (
-                                    categories.map(cat => (
-                                        <option key={cat.id} value={cat.name} className="capitalize">{cat.name}</option>
-                                    ))
-                                )}
-                                <option value="nueva" className="font-bold text-glacier bg-cream/50">+ Crear nueva categoría rápida (solo para este sabor)…</option>
-                            </select>
-                        ) : (
-                            <div className="flex gap-3">
-                                <input 
-                                    name="category"
-                                    value={formData.category}
-                                    onChange={handleChange}
-                                    required
-                                    className="w-full flex-1 rounded-custom border-chocolate/20 bg-white py-3 px-4 focus:ring-chocolate focus:border-chocolate"
-                                    placeholder="Escribe la categoría manual…"
-                                />
-                                <button type="button" onClick={() => { setForceCustomCategory(false); setFormData(prev => ({ ...prev, category: '' })) }} className="px-5 font-bold text-chocolate bg-gray-200 hover:bg-gray-300 rounded-custom transition-colors">Volver</button>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="flex flex-col gap-1">
                         <label className="text-xs font-bold uppercase tracking-wider text-chocolate/80">Link Imagen (URL)</label>
                         <input 
                             name="img"
@@ -166,7 +105,7 @@ export default function FlavorForm({ initialData = null, categories = [], onSubm
                             placeholder="https://..."
                         />
                         {formData.img && (
-                            <div className="mt-2 h-20 w-20 overflow-hidden rounded-md border border-chocolate/10 shadow-sm">
+                            <div className="mt-2 h-20 w-20 overflow-hidden rounded-md border border-chocolate/10 shadow-sm relative shrink-0">
                                 <ImageWithFallback 
                                     src={formData.img} 
                                     alt="Vista previa" 
@@ -176,7 +115,7 @@ export default function FlavorForm({ initialData = null, categories = [], onSubm
                         )}
                     </div>
 
-                    <div className="pt-4 flex gap-4">
+                    <div className="pt-4 flex gap-4 mt-8">
                         <button type="button" onClick={onCancel} className="flex-1 btn-secondary py-3 font-bold rounded-custom">Cancelar</button>
                         <button type="submit" className="flex-1 btn-primary py-3 font-bold rounded-custom">Guardar</button>
                     </div>
